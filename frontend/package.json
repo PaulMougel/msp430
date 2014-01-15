@@ -1,0 +1,16 @@
+{
+  "name": "msp430-frontend",
+  "version": "0.0.1",
+  "description": "MSP430 demo frontend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Paul Mougel",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "express": "~3.4.8",
+    "socket.io": "~0.9.16",
+    "csv": "~0.3.6"
+  }
+}
