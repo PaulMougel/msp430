@@ -4,16 +4,26 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>MSP430 Demo</title>
 	<script src="/socket.io/socket.io.js"></script>
+	<script src="/smoothie.js"></script>
 </head>
  
 <body>
-	Hello!
+	<h1>Temperature graph</h1>
+	<canvas id="temperature" width="800" height="200"></canvas>
 </body>
 
 <script>
+	var smoothie = new SmoothieChart({
+		millisPerPixel: 100
+	});
+	smoothie.streamTo(document.getElementById("temperature"));
+	var temperature_line = new TimeSeries();
+	smoothie.addTimeSeries(temperature_line);
+
+
 	var socket = io.connect('http://localhost');
-	socket.on('temperature', function (data) {
-		console.log(data);
+	socket.on('temperature', function (temperature) {
+		temperature_line.append(new Date().getTime(), temperature);
 	});
 </script>
 

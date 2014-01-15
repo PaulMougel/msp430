@@ -6,6 +6,9 @@ var app = express();
 var server = app.listen(process.env.PORT || 8080);
 var io = require('socket.io').listen(server);
 app.use(express.static(__dirname + '/public'));
+app.get('/smoothie.js', function (req, res) {
+	res.sendfile('./node_modules/smoothie/smoothie.js');
+});
 
 // Data input
 var csvStream = csv();
