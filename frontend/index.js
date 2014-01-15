@@ -1,3 +1,4 @@
+var stream = require('stream');
 var express = require('express');
 var csv = require('csv');
 
@@ -19,4 +20,12 @@ csvStream.transform(function (row) {
 	return null;
 });
 
-process.stdin.pipe(csvStream);
+if (process.env.NODE_ENV != 'test') {
+	process.stdin.pipe(csvStream);
+} else { // shim data
+	var inputStream = new stream.PassThrough();
+	inputStream.pipe(csvStream);
+	setInterval(function () {
+		inputStream.write('temperature,' + Math.random() * 30 + '\n'); // randrom temp. up to 30deg.
+	}, 1000);
+}
