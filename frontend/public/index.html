@@ -25,6 +25,9 @@
 	socket.on('temperature', function (temperature) {
 		temperature_line.append(new Date().getTime(), temperature);
 	});
+	socket.on('rssi', function (data) {
+		console.log(data);
+	});
 </script>
 
 </html>
