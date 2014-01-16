@@ -26,27 +26,12 @@ csvStream.transform(function (row) {
 	return null;
 });
 
+var inputStream;
 if (process.env.NODE_ENV != 'test') {
-	process.stdin.pipe(csvStream);
+	inputStream = process.stdin;
 } else { // shim data
-	var inputStream = new stream.PassThrough();
-	inputStream.pipe(csvStream);
-
-	function getRandomArbitary (min, max) {
-		return Math.random() * (max - min) + min;
-	}
-
-	function getRandomInt (min, max) {
-		return Math.floor(Math.random() * (max - min + 1)) + min;
-	}
-
-	// Format: temperature, tempInDegrees
-	setInterval(function () {
-		inputStream.write('temperature,' + getRandomArbitary(10, 30) + '\n');
-	}, 1000);
-
-	// Format: rssi, nodeId, dbi
-	setInterval(function () {
-		inputStream.write('rssi,' + getRandomInt(0, 5) + ',' + getRandomArbitary(-100, -30) + '\n');
-	}, 1000);
+	inputStream = require('./shim');
+	setInterval(inputStream.generateData.bind(inputStream), 1000);
 }
+
+inputStream.pipe(csvStream)
