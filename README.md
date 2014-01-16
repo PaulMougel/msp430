@@ -14,7 +14,8 @@ All user code is in `board/ez430-applications/demo/src/`, everything else are dr
 
 MSP-430 Front-end
 -----------------
-![](https://raw.github.com/PaulMougel/msp430/master/example.png)
+![](https://raw.github.com/PaulMougel/msp430/master/temperature.png)
+![](https://raw.github.com/PaulMougel/msp430/master/radar.png)
 
 This reads CSV data from `stdin`, that is supposed to be sent by the MSP-430 board.
 

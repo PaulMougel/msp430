@@ -5,14 +5,25 @@
 	<title>MSP430 Demo</title>
 	<script src="/socket.io/socket.io.js"></script>
 	<script src="/smoothie.js"></script>
+	<script src="/vendor/radar-chart-min.js"></script>
+	<script src="/vendor/d3.v3.min.js"></script>
+	<style type="text/css">
+		.legend { /* Radar chart legend */
+			font-size: 1.2em !important;
+		}
+	</style>
 </head>
  
 <body>
 	<h1>Temperature graph</h1>
 	<canvas id="temperature" width="800" height="200"></canvas>
+
+	<h1>Radar</h1>
+	<div id="radar" style="float: left"></div>
 </body>
 
 <script>
+	// Temperature graph
 	var smoothie = new SmoothieChart({
 		millisPerPixel: 100
 	});
@@ -20,13 +31,39 @@
 	var temperature_line = new TimeSeries();
 	smoothie.addTimeSeries(temperature_line);
 
+	// Radar graph
+	// Note: this is an ugly use of a radar char.
+	var nodes = {};
+	function draw_radar () {
+		var data = [];
+
+		var nodeIds = Object.keys(nodes);
+
+		nodeIds.forEach(function (nodeId) {
+			var elem = [];
+			for (var i = 0 ; i < nodeIds.length ; i++) {
+				if (nodeIds[i] === nodeId)
+					// RadarChart doesn't like negative values
+					// -90dBm = low power = far away
+					// -20dBm = high power = close
+					// So in our case we can just take the opposite of the value and we'll be fine
+					elem.push({axis: nodeIds[i], value: -nodes[nodeId]})
+				else
+					elem.push({axis: nodeIds[i], value: 0})
+			}
+			data.push(elem);
+		});
+
+		RadarChart.draw("#radar", data);
+	};
 
 	var socket = io.connect('http://localhost');
 	socket.on('temperature', function (temperature) {
 		temperature_line.append(new Date().getTime(), temperature);
 	});
 	socket.on('rssi', function (data) {
-		console.log(data);
+		nodes[data.nodeId] = data.rssi;
+		draw_radar();
 	});
 </script>
 

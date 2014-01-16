@@ -47,6 +47,6 @@ if (process.env.NODE_ENV != 'test') {
 
 	// Format: rssi, nodeId, dbi
 	setInterval(function () {
-		inputStream.write('rssi,' + getRandomInt(0, 50) + ',' + getRandomArbitary(-100, -30) + '\n');
+		inputStream.write('rssi,' + getRandomInt(0, 5) + ',' + getRandomArbitary(-100, -30) + '\n');
 	}, 1000);
 }
