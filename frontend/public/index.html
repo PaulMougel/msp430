@@ -29,8 +29,11 @@
 	});
 	smoothie.streamTo(document.getElementById("temperature"));
 	var temperature_line = new TimeSeries();
-	smoothie.addTimeSeries(temperature_line);
-
+	smoothie.addTimeSeries(temperature_line, {
+		lineWidth: 5,
+		strokeStyle: "#00ff00"
+	});
+	
 	// Radar graph
 	// Note: this is an ugly use of a radar char.
 	var nodes = {};
