@@ -1,0 +1,16 @@
+Ce programme est destiné à fournir une solution
+de repli sur un système linux, vu que le pilote cdc_acm
+semble défectueux et ne prends pas en charge correctement le ez430.
+
+Toutefois, supprimer ce pilote peut quelquefois se révéler compliqué:
+Par exemple en appliquant un rmmod dès le chargement du module,
+celui ci nous réplique que le module est occupé.
+un lsof | grep ttyACM nous indique que le démon modem_manager est en train de
+tenter d'utiliser le ez430 comme modem. Il est donc nécéssaire d'attendre que
+celui ci ai terminé pour enlever le modem.
+
+Ceci pourrait également expliquer le phénomène observé en patchant le pilote :
+lors de l'insertion, des caractères sont envoyés sur la ligne série, et ses caractères 
+forment une commande AT...
+
+

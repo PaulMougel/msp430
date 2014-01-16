@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<workspace>
+  <project>
+    <path>$WS_DIR$\adc10.ewp</path>
+  </project>
+  <project>
+    <path>$WS_DIR$\button.ewp</path>
+  </project>
+  <project>
+    <path>$WS_DIR$\cc2500.ewp</path>
+  </project>
+  <project>
+    <path>$WS_DIR$\clock.ewp</path>
+  </project>
+  <project>
+    <path>$WS_DIR$\flash.ewp</path>
+  </project>
+  <project>
+    <path>$WS_DIR$\leds.ewp</path>
+  </project>
+  <project>
+    <path>$WS_DIR$\spi.ewp</path>
+  </project>
+  <project>
+    <path>$WS_DIR$\timer.ewp</path>
+  </project>
+  <project>
+    <path>$WS_DIR$\uart.ewp</path>
+  </project>
+  <project>
+    <path>$WS_DIR$\watchdog.ewp</path>
+  </project>
+  <batchBuild/>
+</workspace>
+
+

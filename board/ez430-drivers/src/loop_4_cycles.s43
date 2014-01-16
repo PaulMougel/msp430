@@ -1,0 +1,18 @@
+#include "msp430x22x4.h"
+
+    NAME loop_4_cycles
+
+;==================================================
+; loop_4_cycles
+;==================================================
+
+    PUBLIC loop_4_cycles;
+    RSEG CODE
+loop_4_cycles;
+    a:
+    add.w     #-1,R12    ; LSB, 1 cycle
+    addc.w    #-1,R13    ; MSB, 1 cycles
+    jc a                 ; 2 cycles
+    ret
+
+    END

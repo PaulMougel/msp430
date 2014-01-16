@@ -1,0 +1,976 @@
+
+bin/led_blink.elf:     file format elf32-msp430
+
+SYMBOL TABLE:
+00008000 l    d  .text	00000000 .text
+00000200 l    d  .bss	00000000 .bss
+00000204 l    d  .noinit	00000000 .noinit
+0000ffe0 l    d  .vectors	00000000 .vectors
+00000000 l    d  .debug_aranges	00000000 .debug_aranges
+00000000 l    d  .debug_info	00000000 .debug_info
+00000000 l    d  .debug_abbrev	00000000 .debug_abbrev
+00000000 l    d  .debug_line	00000000 .debug_line
+00000000 l    d  .debug_frame	00000000 .debug_frame
+00000000 l    d  .debug_str	00000000 .debug_str
+00000000 l    d  .debug_loc	00000000 .debug_loc
+00000000 l    d  .debug_ranges	00000000 .debug_ranges
+00000000 l    df *ABS*	00000000 main.c
+0000806a l       .text	00000000 __br_unexpected_
+00000000 l    df *ABS*	00000000 clock.c
+00000200 l     O .bss	00000002 mclk_freq_mhz
+0000807c l     F .text	000000c0 set_mcu_speed
+00000000 l    df *ABS*	00000000 leds.c
+00000000 l    df *ABS*	00000000 watchdog.c
+00000202 l     O .bss	00000002 watchdog_backup
+00000057 g       *ABS*	00000000 __BCSCTL1
+000081e6 g     F .text	00000014 set_mcu_speed_dco_mclk_16MHz_smclk_16MHz
+00000174 g       *ABS*	00000000 __TACCR1
+00000000 g       *ABS*	00000000 __data_size
+0000806a  w      .text	00000000 __isr_14
+00000128 g       *ABS*	00000000 __FCTL1
+000081be g     F .text	00000014 set_mcu_speed_dco_mclk_12MHz_smclk_3MHz
+00000024 g       *ABS*	00000000 __P1IES
+0000004b g       *ABS*	00000000 __ADC10AE1
+00000069 g       *ABS*	00000000 __UCB0CTL1
+0000806a  w      .text	00000000 __isr_4
+00000002 g       *ABS*	00000000 __IFG1
+00000060 g       *ABS*	00000000 __UCA0CTL0
+00008160 g     F .text	00000012 set_mcu_speed_dco_mclk_8MHz_smclk_4MHz
+0000012e g       *ABS*	00000000 __TAIV
+00000000 g       .vectors	00000000 _efartext
+00000001 g       *ABS*	00000000 __IE2
+0000002b g       *ABS*	00000000 __P2IFG
+0000001a g       *ABS*	00000000 __P3DIR
+00008488 g       *ABS*	00000000 _etext
+00000190 g       *ABS*	00000000 __TBR
+000010f8 g       *ABS*	00000000 __CALDCO_16MHZ
+0000001d g       *ABS*	00000000 __P4OUT
+00000004 g       *ABS*	00000000 __bss_size
+000010fd g       *ABS*	00000000 __CALBC1_8MHZ
+00008236 g     F .text	00000010 loop_4_cycles
+00008000  w      .text	00000000 __watchdog_support
+00008064  w      .text	00000000 __stop_progExec__
+0000002d g       *ABS*	00000000 __P2IE
+00000192 g       *ABS*	00000000 __TBCCR0
+0000806a  w      .text	00000000 __isr_11
+00000186 g       *ABS*	00000000 __TBCCTL2
+000081aa g     F .text	00000014 set_mcu_speed_dco_mclk_12MHz_smclk_6MHz
+00000025 g       *ABS*	00000000 __P1IE
+0000006b g       *ABS*	00000000 __UCB0BR1
+00000049 g       *ABS*	00000000 __ADC10DTC1
+00000066 g       *ABS*	00000000 __UCA0RXBUF
+00000061 g       *ABS*	00000000 __UCA0CTL1
+00008184 g     F .text	00000012 set_mcu_speed_dco_mclk_8MHz_smclk_1MHz
+0000820e g     F .text	00000014 set_mcu_speed_dco_mclk_16MHz_smclk_4MHz
+00000182 g       *ABS*	00000000 __TBCCTL0
+0000006d g       *ABS*	00000000 __UCB0STAT
+0000806a  w      .text	00000000 __isr_5
+00000063 g       *ABS*	00000000 __UCA0BR1
+00008488 g       *ABS*	00000000 __data_load_start
+0000840c g     F .text	00000016 leds_on
+0000806a g       .text	00000000 __dtors_end
+00000053 g       *ABS*	00000000 __BCSCTL3
+000083a4 g     F .text	00000014 led_green_switch
+000001bc g       *ABS*	00000000 __ADC10SA
+00000166 g       *ABS*	00000000 __TACCTL2
+00000065 g       *ABS*	00000000 __UCA0STAT
+0000837a g     F .text	00000016 led_green_off
+0000806a  w      .text	00000000 __isr_2
+00000160 g       *ABS*	00000000 __TACTL
+0000012c g       *ABS*	00000000 __FCTL3
+0000806a  w      .text	00000000 __isr_10
+0000806e g     F .text	0000000e get_mclk_freq_mhz
+0000002e g       *ABS*	00000000 __P2SEL
+00000180 g       *ABS*	00000000 __TBCTL
+00008172 g     F .text	00000012 set_mcu_speed_dco_mclk_8MHz_smclk_2MHz
+000010f9 g       *ABS*	00000000 __CALBC1_16MHZ
+000000c3 g       *ABS*	00000000 __OA1CTL1
+00000023 g       *ABS*	00000000 __P1IFG
+000010fb g       *ABS*	00000000 __CALBC1_12MHZ
+0000004a g       *ABS*	00000000 __ADC10AE0
+0000011a g       *ABS*	00000000 __UCB0I2CSA
+000083ce g     F .text	00000014 led_red_on
+00000172 g       *ABS*	00000000 __TACCR0
+000083f6 g     F .text	00000016 leds_off
+00000056 g       *ABS*	00000000 __DCOCTL
+00000003 g       *ABS*	00000000 __IFG2
+00000204 g     O .noinit	00000002 __wdt_clear_value
+0000001b g       *ABS*	00000000 __P3SEL
+0000806a  w      .text	00000000 __isr_7
+0000ffe0 g     O .vectors	00000020 __ivtbl_16
+0000006c g       *ABS*	00000000 __UCB0I2CIE
+0000006a g       *ABS*	00000000 __UCB0BR0
+00000028 g       *ABS*	00000000 __P2IN
+00000118 g       *ABS*	00000000 __UCB0I2COA
+00000184 g       *ABS*	00000000 __TBCCTL1
+000001b4 g       *ABS*	00000000 __ADC10MEM
+000083b8 g     F .text	00000016 led_red_off
+0000806a  w      .text	00000000 __isr_0
+00000029 g       *ABS*	00000000 __P2OUT
+0000012a g       *ABS*	00000000 __FCTL2
+00000064 g       *ABS*	00000000 __UCA0MCTL
+00008028  w      .text	00000000 __do_clear_bss
+00000021 g       *ABS*	00000000 __P1OUT
+0000002c g       *ABS*	00000000 __P2IES
+00000026 g       *ABS*	00000000 __P1SEL
+000081fa g     F .text	00000014 set_mcu_speed_dco_mclk_16MHz_smclk_8MHz
+00008454 g     F .text	0000001c watchdog_stop
+0000813c g     F .text	00000012 set_mcu_speed_dco_mclk_1MHz_smclk_1MHz
+000081d2 g     F .text	00000014 set_mcu_speed_dco_mclk_12MHz_smclk_1_5MHz
+00000027 g       *ABS*	00000000 __P1REN
+000000c0 g       *ABS*	00000000 __OA0CTL0
+00008222 g     F .text	00000014 set_mcu_speed_dco_mclk_16MHz_smclk_2MHz
+00008486  w      .text	00000000 _unexpected_
+0000806a  w      .text	00000000 __isr_8
+0000806a  w      .text	00000000 __isr_3
+000083e2 g     F .text	00000014 led_red_switch
+000010fc g       *ABS*	00000000 __CALDCO_8MHZ
+00008000  w      .text	00000000 _reset_vector__
+0000806a g       .text	00000000 __ctors_start
+0000806a  w      .text	00000000 __isr_12
+000010fa g       *ABS*	00000000 __CALDCO_12MHZ
+00000018 g       *ABS*	00000000 __P3IN
+00008010  w      .text	00000000 __do_copy_data
+00000200 g       .bss	00000000 __bss_start
+0000803e g     F .text	00000026 main
+00000176 g       *ABS*	00000000 __TACCR2
+000082ec g     F .text	0000008e delay_ms
+000000c2 g       *ABS*	00000000 __OA1CTL0
+0000806a  w      .text	00000000 __isr_13
+00008246 g     F .text	000000a6 delay_usec
+00000170 g       *ABS*	00000000 __TAR
+0000001e g       *ABS*	00000000 __P4DIR
+00000162 g       *ABS*	00000000 __TACCTL0
+00010000 g       .vectors	00000000 _vectors_end
+0000002a g       *ABS*	00000000 __P2DIR
+00000068 g       *ABS*	00000000 __UCB0CTL0
+0000002f g       *ABS*	00000000 __P2REN
+0000006e g       *ABS*	00000000 __UCB0RXBUF
+000001b0 g       *ABS*	00000000 __ADC10CTL0
+0000806a  w      .text	00000000 __isr_9
+0000005e g       *ABS*	00000000 __UCA0IRTCTL
+000010fe g       *ABS*	00000000 __CALDCO_1MHZ
+00000067 g       *ABS*	00000000 __UCA0TXBUF
+0000800c  w      .text	00000000 __init_stack
+0000005d g       *ABS*	00000000 __UCA0ABCTL
+00000019 g       *ABS*	00000000 __P3OUT
+000000c1 g       *ABS*	00000000 __OA0CTL1
+00008196 g     F .text	00000014 set_mcu_speed_dco_mclk_12MHz_smclk_12MHz
+0000806a g       .text	00000000 __dtors_start
+0000806a  w      .text	00000000 __isr_6
+0000806a g       .text	00000000 __ctors_end
+00000062 g       *ABS*	00000000 __UCA0BR0
+00000600 g       *ABS*	00000000 __stack
+0000814e g     F .text	00000012 set_mcu_speed_dco_mclk_8MHz_smclk_8MHz
+0000806a  w      .text	00000000 __isr_1
+00000200 g       .text	00000000 _edata
+00000206 g       *ABS*	00000000 _end
+00000194 g       *ABS*	00000000 __TBCCR1
+00000048 g       *ABS*	00000000 __ADC10DTC0
+0000011e g       *ABS*	00000000 __TBIV
+000001b2 g       *ABS*	00000000 __ADC10CTL1
+00008390 g     F .text	00000014 led_green_on
+00008470 g     F .text	00000016 watchdog_restore
+00000058 g       *ABS*	00000000 __BCSCTL2
+00008064  w      .text	00000000 _endless_loop__
+0000001f g       *ABS*	00000000 __P4SEL
+00000196 g       *ABS*	00000000 __TBCCR2
+00000022 g       *ABS*	00000000 __P1DIR
+0000005f g       *ABS*	00000000 __UCA0IRRCTL
+00000010 g       *ABS*	00000000 __P3REN
+00000164 g       *ABS*	00000000 __TACCTL1
+0000006f g       *ABS*	00000000 __UCB0TXBUF
+000010ff g       *ABS*	00000000 __CALBC1_1MHZ
+00008010  w      .text	00000000 __low_level_init
+00000011 g       *ABS*	00000000 __P4REN
+00000200 g       .text	00000000 __data_start
+00000120 g       *ABS*	00000000 __WDTCTL
+00000000 g       *ABS*	00000000 __IE1
+00000020 g       *ABS*	00000000 __P1IN
+0000001c g       *ABS*	00000000 __P4IN
+00008422 g     F .text	00000032 leds_init
+
+
+
+Disassembly of section .text:
+
+00008000 <__watchdog_support>:
+    8000:	55 42 20 01 	mov.b	&0x0120,r5	
+    8004:	35 d0 08 5a 	bis	#23048,	r5	;#0x5a08
+    8008:	82 45 04 02 	mov	r5,	&0x0204	
+
+0000800c <__init_stack>:
+    800c:	31 40 00 06 	mov	#1536,	r1	;#0x0600
+
+00008010 <__do_copy_data>:
+    8010:	3f 40 00 00 	mov	#0,	r15	;#0x0000
+    8014:	0f 93       	tst	r15		
+    8016:	08 24       	jz	$+18     	;abs 0x8028
+    8018:	92 42 04 02 	mov	&0x0204,&0x0120	
+    801c:	20 01 
+    801e:	2f 83       	decd	r15		
+    8020:	9f 4f 88 84 	mov	-31608(r15),512(r15);0x8488(r15), 0x0200(r15)
+    8024:	00 02 
+    8026:	f8 23       	jnz	$-14     	;abs 0x8018
+
+00008028 <__do_clear_bss>:
+    8028:	3f 40 04 00 	mov	#4,	r15	;#0x0004
+    802c:	0f 93       	tst	r15		
+    802e:	07 24       	jz	$+16     	;abs 0x803e
+    8030:	92 42 04 02 	mov	&0x0204,&0x0120	
+    8034:	20 01 
+    8036:	1f 83       	dec	r15		
+    8038:	cf 43 00 02 	mov.b	#0,	512(r15);r3 As==00, 0x0200(r15)
+    803c:	f9 23       	jnz	$-12     	;abs 0x8030
+
+0000803e <main>:
+#include "watchdog.h"
+
+#define ID 1
+
+int main(void)
+{
+    803e:	04 41       	mov	r1,	r4	
+    8040:	24 53       	incd	r4		
+    watchdog_stop();
+    8042:	b0 12 54 84 	call	#0x8454	
+
+    set_mcu_speed_dco_mclk_8MHz_smclk_1MHz();
+    8046:	b0 12 84 81 	call	#0x8184	
+    leds_init();
+    804a:	b0 12 22 84 	call	#0x8422	
+
+    led_red_on();
+    804e:	b0 12 ce 83 	call	#0x83ce	
+    for(;;)
+    {
+        delay_ms(1000);
+    8052:	3f 40 e8 03 	mov	#1000,	r15	;#0x03e8
+    8056:	b0 12 ec 82 	call	#0x82ec	
+        led_red_switch();
+    805a:	b0 12 e2 83 	call	#0x83e2	
+        led_green_switch();
+    805e:	b0 12 a4 83 	call	#0x83a4	
+    }
+    8062:	f7 3f       	jmp	$-16     	;abs 0x8052
+
+00008064 <__stop_progExec__>:
+    8064:	32 d0 f0 00 	bis	#240,	r2	;#0x00f0
+    8068:	fd 3f       	jmp	$-4      	;abs 0x8064
+
+0000806a <__ctors_end>:
+    806a:	30 40 86 84 	br	#0x8486	
+
+0000806e <get_mclk_freq_mhz>:
+ ***************************************************************/
+
+#define WAIT_CRISTAL() do { } while (0)
+
+int get_mclk_freq_mhz()
+{
+    806e:	04 12       	push	r4		
+    8070:	04 41       	mov	r1,	r4	
+    8072:	24 53       	incd	r4		
+	return mclk_freq_mhz;
+    8074:	1f 42 00 02 	mov	&0x0200,r15	
+}
+    8078:	34 41       	pop	r4		
+    807a:	30 41       	ret			
+
+0000807c <set_mcu_speed>:
+
+static void set_mcu_speed(unsigned char dco_mhz, unsigned char smclk_divider)
+{
+    807c:	04 12       	push	r4		
+    807e:	04 41       	mov	r1,	r4	
+    8080:	24 53       	incd	r4		
+    8082:	21 83       	decd	r1		
+    8084:	c4 4f fc ff 	mov.b	r15,	-4(r4)	;0xfffc(r4)
+    8088:	c4 4e fd ff 	mov.b	r14,	-3(r4)	;0xfffd(r4)
+	switch (dco_mhz) {
+    808c:	5f 44 fc ff 	mov.b	-4(r4),	r15	;0xfffc(r4)
+    8090:	3f 92       	cmp	#8,	r15	;r2 As==11
+    8092:	16 24       	jz	$+46     	;abs 0x80c0
+    8094:	3f 90 09 00 	cmp	#9,	r15	;#0x0009
+    8098:	03 34       	jge	$+8      	;abs 0x80a0
+    809a:	1f 93       	cmp	#1,	r15	;r3 As==01
+    809c:	08 24       	jz	$+18     	;abs 0x80ae
+    809e:	2b 3c       	jmp	$+88     	;abs 0x80f6
+    80a0:	3f 90 0c 00 	cmp	#12,	r15	;#0x000c
+    80a4:	16 24       	jz	$+46     	;abs 0x80d2
+    80a6:	3f 90 10 00 	cmp	#16,	r15	;#0x0010
+    80aa:	1c 24       	jz	$+58     	;abs 0x80e4
+    80ac:	24 3c       	jmp	$+74     	;abs 0x80f6
+	case 1:
+		BCSCTL1 = CALBC1_1MHZ;
+    80ae:	5f 42 ff 10 	mov.b	&0x10ff,r15	
+    80b2:	c2 4f 57 00 	mov.b	r15,	&0x0057	
+		DCOCTL = CALDCO_1MHZ;
+    80b6:	5f 42 fe 10 	mov.b	&0x10fe,r15	
+    80ba:	c2 4f 56 00 	mov.b	r15,	&0x0056	
+		break;
+    80be:	1b 3c       	jmp	$+56     	;abs 0x80f6
+	case 8:
+		BCSCTL1 = CALBC1_8MHZ;
+    80c0:	5f 42 fd 10 	mov.b	&0x10fd,r15	
+    80c4:	c2 4f 57 00 	mov.b	r15,	&0x0057	
+		DCOCTL = CALDCO_8MHZ;
+    80c8:	5f 42 fc 10 	mov.b	&0x10fc,r15	
+    80cc:	c2 4f 56 00 	mov.b	r15,	&0x0056	
+		break;
+    80d0:	12 3c       	jmp	$+38     	;abs 0x80f6
+	case 12:
+		BCSCTL1 = CALBC1_12MHZ;
+    80d2:	5f 42 fb 10 	mov.b	&0x10fb,r15	
+    80d6:	c2 4f 57 00 	mov.b	r15,	&0x0057	
+		DCOCTL = CALDCO_12MHZ;
+    80da:	5f 42 fa 10 	mov.b	&0x10fa,r15	
+    80de:	c2 4f 56 00 	mov.b	r15,	&0x0056	
+		break;
+    80e2:	09 3c       	jmp	$+20     	;abs 0x80f6
+	case 16:
+		BCSCTL1 = CALBC1_16MHZ;
+    80e4:	5f 42 f9 10 	mov.b	&0x10f9,r15	
+    80e8:	c2 4f 57 00 	mov.b	r15,	&0x0057	
+		DCOCTL = CALDCO_16MHZ;
+    80ec:	5f 42 f8 10 	mov.b	&0x10f8,r15	
+    80f0:	c2 4f 56 00 	mov.b	r15,	&0x0056	
+		break;
+    80f4:	03 43       	nop			
+	}
+	switch (smclk_divider) {
+    80f6:	5f 44 fd ff 	mov.b	-3(r4),	r15	;0xfffd(r4)
+    80fa:	2f 93       	cmp	#2,	r15	;r3 As==10
+    80fc:	0e 24       	jz	$+30     	;abs 0x811a
+    80fe:	3f 90 03 00 	cmp	#3,	r15	;#0x0003
+    8102:	03 34       	jge	$+8      	;abs 0x810a
+    8104:	1f 93       	cmp	#1,	r15	;r3 As==01
+    8106:	06 24       	jz	$+14     	;abs 0x8114
+    8108:	12 3c       	jmp	$+38     	;abs 0x812e
+    810a:	2f 92       	cmp	#4,	r15	;r2 As==10
+    810c:	09 24       	jz	$+20     	;abs 0x8120
+    810e:	3f 92       	cmp	#8,	r15	;r2 As==11
+    8110:	0a 24       	jz	$+22     	;abs 0x8126
+    8112:	0d 3c       	jmp	$+28     	;abs 0x812e
+	case 1:
+		/* SELM_0: MCL Source Select 0: DCOCLK */
+		/* DIVS_1: SMCLK divider /1 */
+		BCSCTL2 = SELM_0 | DIVS_0;
+    8114:	c2 43 58 00 	mov.b	#0,	&0x0058	;r3 As==00
+		break;
+    8118:	0a 3c       	jmp	$+22     	;abs 0x812e
+	case 2:
+		/* DIVS_1: SMCLK divider /2 */
+		BCSCTL2 = SELM_0 | DIVS_1;
+    811a:	e2 43 58 00 	mov.b	#2,	&0x0058	;r3 As==10
+		break;
+    811e:	07 3c       	jmp	$+16     	;abs 0x812e
+	case 4:
+		/* DIVS_2: SMCLK divider /4 */
+		BCSCTL2 = SELM_0 | DIVS_2;
+    8120:	e2 42 58 00 	mov.b	#4,	&0x0058	;r2 As==10
+		break;
+    8124:	04 3c       	jmp	$+10     	;abs 0x812e
+	case 8:
+		/* DIVS_3: SMCLK divider /8 */
+		BCSCTL2 = SELM_0 | DIVS_3;
+    8126:	f2 40 06 00 	mov.b	#6,	&0x0058	;#0x0006
+    812a:	58 00 
+		break;
+    812c:	03 43       	nop			
+	}
+
+	WAIT_CRISTAL();
+
+	mclk_freq_mhz = dco_mhz;
+    812e:	5f 44 fc ff 	mov.b	-4(r4),	r15	;0xfffc(r4)
+    8132:	82 4f 00 02 	mov	r15,	&0x0200	
+}
+    8136:	21 53       	incd	r1		
+    8138:	34 41       	pop	r4		
+    813a:	30 41       	ret			
+
+0000813c <set_mcu_speed_dco_mclk_1MHz_smclk_1MHz>:
+
+void set_mcu_speed_dco_mclk_1MHz_smclk_1MHz()
+{
+    813c:	04 12       	push	r4		
+    813e:	04 41       	mov	r1,	r4	
+    8140:	24 53       	incd	r4		
+	set_mcu_speed(1, 1);
+    8142:	5e 43       	mov.b	#1,	r14	;r3 As==01
+    8144:	5f 43       	mov.b	#1,	r15	;r3 As==01
+    8146:	b0 12 7c 80 	call	#0x807c	
+}
+    814a:	34 41       	pop	r4		
+    814c:	30 41       	ret			
+
+0000814e <set_mcu_speed_dco_mclk_8MHz_smclk_8MHz>:
+
+void set_mcu_speed_dco_mclk_8MHz_smclk_8MHz()
+{
+    814e:	04 12       	push	r4		
+    8150:	04 41       	mov	r1,	r4	
+    8152:	24 53       	incd	r4		
+	set_mcu_speed(8, 1);
+    8154:	5e 43       	mov.b	#1,	r14	;r3 As==01
+    8156:	7f 42       	mov.b	#8,	r15	;r2 As==11
+    8158:	b0 12 7c 80 	call	#0x807c	
+}
+    815c:	34 41       	pop	r4		
+    815e:	30 41       	ret			
+
+00008160 <set_mcu_speed_dco_mclk_8MHz_smclk_4MHz>:
+
+void set_mcu_speed_dco_mclk_8MHz_smclk_4MHz()
+{
+    8160:	04 12       	push	r4		
+    8162:	04 41       	mov	r1,	r4	
+    8164:	24 53       	incd	r4		
+	set_mcu_speed(8, 2);
+    8166:	6e 43       	mov.b	#2,	r14	;r3 As==10
+    8168:	7f 42       	mov.b	#8,	r15	;r2 As==11
+    816a:	b0 12 7c 80 	call	#0x807c	
+}
+    816e:	34 41       	pop	r4		
+    8170:	30 41       	ret			
+
+00008172 <set_mcu_speed_dco_mclk_8MHz_smclk_2MHz>:
+
+void set_mcu_speed_dco_mclk_8MHz_smclk_2MHz()
+{
+    8172:	04 12       	push	r4		
+    8174:	04 41       	mov	r1,	r4	
+    8176:	24 53       	incd	r4		
+	set_mcu_speed(8, 4);
+    8178:	6e 42       	mov.b	#4,	r14	;r2 As==10
+    817a:	7f 42       	mov.b	#8,	r15	;r2 As==11
+    817c:	b0 12 7c 80 	call	#0x807c	
+}
+    8180:	34 41       	pop	r4		
+    8182:	30 41       	ret			
+
+00008184 <set_mcu_speed_dco_mclk_8MHz_smclk_1MHz>:
+
+void set_mcu_speed_dco_mclk_8MHz_smclk_1MHz()
+{
+    8184:	04 12       	push	r4		
+    8186:	04 41       	mov	r1,	r4	
+    8188:	24 53       	incd	r4		
+	set_mcu_speed(8, 8);
+    818a:	7e 42       	mov.b	#8,	r14	;r2 As==11
+    818c:	7f 42       	mov.b	#8,	r15	;r2 As==11
+    818e:	b0 12 7c 80 	call	#0x807c	
+}
+    8192:	34 41       	pop	r4		
+    8194:	30 41       	ret			
+
+00008196 <set_mcu_speed_dco_mclk_12MHz_smclk_12MHz>:
+
+void set_mcu_speed_dco_mclk_12MHz_smclk_12MHz()
+{
+    8196:	04 12       	push	r4		
+    8198:	04 41       	mov	r1,	r4	
+    819a:	24 53       	incd	r4		
+	set_mcu_speed(12, 1);
+    819c:	5e 43       	mov.b	#1,	r14	;r3 As==01
+    819e:	7f 40 0c 00 	mov.b	#12,	r15	;#0x000c
+    81a2:	b0 12 7c 80 	call	#0x807c	
+}
+    81a6:	34 41       	pop	r4		
+    81a8:	30 41       	ret			
+
+000081aa <set_mcu_speed_dco_mclk_12MHz_smclk_6MHz>:
+
+void set_mcu_speed_dco_mclk_12MHz_smclk_6MHz()
+{
+    81aa:	04 12       	push	r4		
+    81ac:	04 41       	mov	r1,	r4	
+    81ae:	24 53       	incd	r4		
+	set_mcu_speed(12, 2);
+    81b0:	6e 43       	mov.b	#2,	r14	;r3 As==10
+    81b2:	7f 40 0c 00 	mov.b	#12,	r15	;#0x000c
+    81b6:	b0 12 7c 80 	call	#0x807c	
+}
+    81ba:	34 41       	pop	r4		
+    81bc:	30 41       	ret			
+
+000081be <set_mcu_speed_dco_mclk_12MHz_smclk_3MHz>:
+
+void set_mcu_speed_dco_mclk_12MHz_smclk_3MHz()
+{
+    81be:	04 12       	push	r4		
+    81c0:	04 41       	mov	r1,	r4	
+    81c2:	24 53       	incd	r4		
+	set_mcu_speed(12, 4);
+    81c4:	6e 42       	mov.b	#4,	r14	;r2 As==10
+    81c6:	7f 40 0c 00 	mov.b	#12,	r15	;#0x000c
+    81ca:	b0 12 7c 80 	call	#0x807c	
+}
+    81ce:	34 41       	pop	r4		
+    81d0:	30 41       	ret			
+
+000081d2 <set_mcu_speed_dco_mclk_12MHz_smclk_1_5MHz>:
+
+void set_mcu_speed_dco_mclk_12MHz_smclk_1_5MHz()
+{
+    81d2:	04 12       	push	r4		
+    81d4:	04 41       	mov	r1,	r4	
+    81d6:	24 53       	incd	r4		
+	set_mcu_speed(12, 8);
+    81d8:	7e 42       	mov.b	#8,	r14	;r2 As==11
+    81da:	7f 40 0c 00 	mov.b	#12,	r15	;#0x000c
+    81de:	b0 12 7c 80 	call	#0x807c	
+}
+    81e2:	34 41       	pop	r4		
+    81e4:	30 41       	ret			
+
+000081e6 <set_mcu_speed_dco_mclk_16MHz_smclk_16MHz>:
+
+void set_mcu_speed_dco_mclk_16MHz_smclk_16MHz()
+{
+    81e6:	04 12       	push	r4		
+    81e8:	04 41       	mov	r1,	r4	
+    81ea:	24 53       	incd	r4		
+	set_mcu_speed(16, 1);
+    81ec:	5e 43       	mov.b	#1,	r14	;r3 As==01
+    81ee:	7f 40 10 00 	mov.b	#16,	r15	;#0x0010
+    81f2:	b0 12 7c 80 	call	#0x807c	
+}
+    81f6:	34 41       	pop	r4		
+    81f8:	30 41       	ret			
+
+000081fa <set_mcu_speed_dco_mclk_16MHz_smclk_8MHz>:
+
+void set_mcu_speed_dco_mclk_16MHz_smclk_8MHz()
+{
+    81fa:	04 12       	push	r4		
+    81fc:	04 41       	mov	r1,	r4	
+    81fe:	24 53       	incd	r4		
+	set_mcu_speed(16, 2);
+    8200:	6e 43       	mov.b	#2,	r14	;r3 As==10
+    8202:	7f 40 10 00 	mov.b	#16,	r15	;#0x0010
+    8206:	b0 12 7c 80 	call	#0x807c	
+}
+    820a:	34 41       	pop	r4		
+    820c:	30 41       	ret			
+
+0000820e <set_mcu_speed_dco_mclk_16MHz_smclk_4MHz>:
+
+void set_mcu_speed_dco_mclk_16MHz_smclk_4MHz()
+{
+    820e:	04 12       	push	r4		
+    8210:	04 41       	mov	r1,	r4	
+    8212:	24 53       	incd	r4		
+	set_mcu_speed(16, 4);
+    8214:	6e 42       	mov.b	#4,	r14	;r2 As==10
+    8216:	7f 40 10 00 	mov.b	#16,	r15	;#0x0010
+    821a:	b0 12 7c 80 	call	#0x807c	
+}
+    821e:	34 41       	pop	r4		
+    8220:	30 41       	ret			
+
+00008222 <set_mcu_speed_dco_mclk_16MHz_smclk_2MHz>:
+
+void set_mcu_speed_dco_mclk_16MHz_smclk_2MHz()
+{
+    8222:	04 12       	push	r4		
+    8224:	04 41       	mov	r1,	r4	
+    8226:	24 53       	incd	r4		
+	set_mcu_speed(16, 8);
+    8228:	7e 42       	mov.b	#8,	r14	;r2 As==11
+    822a:	7f 40 10 00 	mov.b	#16,	r15	;#0x0010
+    822e:	b0 12 7c 80 	call	#0x807c	
+}
+    8232:	34 41       	pop	r4		
+    8234:	30 41       	ret			
+
+00008236 <loop_4_cycles>:
+/* the IAR version of loop_4_cycles is defined in loop_4_cycles.s43 */
+#if defined(__GNUC__) && defined(__MSP430__)
+/* uint32_t version */
+/* will block 4*n cycles + constant (function jump and init) */
+void loop_4_cycles(register uint32_t n)
+{
+    8236:	04 12       	push	r4		
+    8238:	04 41       	mov	r1,	r4	
+    823a:	24 53       	incd	r4		
+	/* C equivalent: do{ n--; } while(n > 0) */
+	__asm__ __volatile__("0: \n" "add.w #-1,%A[n] \n"	/* LSB, 1 cycles */
+    823c:	3e 53       	add	#-1,	r14	;r3 As==11
+    823e:	3f 63       	addc	#-1,	r15	;r3 As==11
+    8240:	fd 2f       	jc	$-4      	;abs 0x823c
+			     "addc.w #-1,%B[n] \n"	/* MSB, 1 cycles */
+			     "jc 0b \n"	/* 2 cycles      */
+			     :[n] "+r"((long)n));
+}
+    8242:	34 41       	pop	r4		
+    8244:	30 41       	ret			
+
+00008246 <delay_usec>:
+#endif
+
+void inline delay_usec(unsigned int usec)
+{
+    8246:	04 12       	push	r4		
+    8248:	04 41       	mov	r1,	r4	
+    824a:	24 53       	incd	r4		
+    824c:	31 50 fa ff 	add	#-6,	r1	;#0xfffa
+    8250:	84 4f fc ff 	mov	r15,	-4(r4)	;0xfffc(r4)
+	uint32_t loops;
+	switch (mclk_freq_mhz) {
+    8254:	1f 42 00 02 	mov	&0x0200,r15	
+    8258:	3f 92       	cmp	#8,	r15	;r2 As==11
+    825a:	18 24       	jz	$+50     	;abs 0x828c
+    825c:	3f 90 09 00 	cmp	#9,	r15	;#0x0009
+    8260:	03 2c       	jc	$+8      	;abs 0x8268
+    8262:	1f 93       	cmp	#1,	r15	;r3 As==01
+    8264:	08 24       	jz	$+18     	;abs 0x8276
+    8266:	2d 3c       	jmp	$+92     	;abs 0x82c2
+    8268:	3f 90 0c 00 	cmp	#12,	r15	;#0x000c
+    826c:	17 24       	jz	$+48     	;abs 0x829c
+    826e:	3f 90 10 00 	cmp	#16,	r15	;#0x0010
+    8272:	1e 24       	jz	$+62     	;abs 0x82b0
+    8274:	26 3c       	jmp	$+78     	;abs 0x82c2
+	case 1:		// 4 cycles == 4 us
+		loops = usec >> 2;
+    8276:	1f 44 fc ff 	mov	-4(r4),	r15	;0xfffc(r4)
+    827a:	12 c3       	clrc			
+    827c:	0f 10       	rrc	r15		
+    827e:	12 c3       	clrc			
+    8280:	0f 10       	rrc	r15		
+    8282:	84 4f f8 ff 	mov	r15,	-8(r4)	;0xfff8(r4)
+    8286:	84 43 fa ff 	mov	#0,	-6(r4)	;r3 As==00, 0xfffa(r4)
+		break;
+    828a:	26 3c       	jmp	$+78     	;abs 0x82d8
+	case 8:		// 4 cycles == 0.5 us
+		loops = usec << 1;
+    828c:	1f 44 fc ff 	mov	-4(r4),	r15	;0xfffc(r4)
+    8290:	0f 5f       	rla	r15		
+    8292:	84 4f f8 ff 	mov	r15,	-8(r4)	;0xfff8(r4)
+    8296:	84 43 fa ff 	mov	#0,	-6(r4)	;r3 As==00, 0xfffa(r4)
+		break;
+    829a:	1e 3c       	jmp	$+62     	;abs 0x82d8
+	case 12:		// 4 cycles == 0.33 us
+		loops = usec * 3;
+    829c:	1e 44 fc ff 	mov	-4(r4),	r14	;0xfffc(r4)
+    82a0:	0f 4e       	mov	r14,	r15	
+    82a2:	0f 5f       	rla	r15		
+    82a4:	0f 5e       	add	r14,	r15	
+    82a6:	84 4f f8 ff 	mov	r15,	-8(r4)	;0xfff8(r4)
+    82aa:	84 43 fa ff 	mov	#0,	-6(r4)	;r3 As==00, 0xfffa(r4)
+		break;
+    82ae:	14 3c       	jmp	$+42     	;abs 0x82d8
+	case 16:		// 4 cycles == 0.25 us
+		loops = usec << 2;
+    82b0:	1f 44 fc ff 	mov	-4(r4),	r15	;0xfffc(r4)
+    82b4:	0f 5f       	rla	r15		
+    82b6:	0f 5f       	rla	r15		
+    82b8:	84 4f f8 ff 	mov	r15,	-8(r4)	;0xfff8(r4)
+    82bc:	84 43 fa ff 	mov	#0,	-6(r4)	;r3 As==00, 0xfffa(r4)
+		break;
+    82c0:	0b 3c       	jmp	$+24     	;abs 0x82d8
+	default:
+		loops = usec >> 2; /* arbitrary 1MHz */
+    82c2:	1f 44 fc ff 	mov	-4(r4),	r15	;0xfffc(r4)
+    82c6:	12 c3       	clrc			
+    82c8:	0f 10       	rrc	r15		
+    82ca:	12 c3       	clrc			
+    82cc:	0f 10       	rrc	r15		
+    82ce:	84 4f f8 ff 	mov	r15,	-8(r4)	;0xfff8(r4)
+    82d2:	84 43 fa ff 	mov	#0,	-6(r4)	;r3 As==00, 0xfffa(r4)
+		break;
+    82d6:	03 43       	nop			
+	}
+	loop_4_cycles(loops);
+    82d8:	1e 44 f8 ff 	mov	-8(r4),	r14	;0xfff8(r4)
+    82dc:	1f 44 fa ff 	mov	-6(r4),	r15	;0xfffa(r4)
+    82e0:	b0 12 36 82 	call	#0x8236	
+}
+    82e4:	31 50 06 00 	add	#6,	r1	;#0x0006
+    82e8:	34 41       	pop	r4		
+    82ea:	30 41       	ret			
+
+000082ec <delay_ms>:
+
+void delay_ms(unsigned int ms)
+{
+    82ec:	04 12       	push	r4		
+    82ee:	04 41       	mov	r1,	r4	
+    82f0:	24 53       	incd	r4		
+    82f2:	31 82       	sub	#8,	r1	;r2 As==11
+    82f4:	84 4f fc ff 	mov	r15,	-4(r4)	;0xfffc(r4)
+	unsigned int i;
+	uint32_t loops;
+
+	switch (mclk_freq_mhz) {
+    82f8:	1f 42 00 02 	mov	&0x0200,r15	
+    82fc:	3f 92       	cmp	#8,	r15	;r2 As==11
+    82fe:	13 24       	jz	$+40     	;abs 0x8326
+    8300:	3f 90 09 00 	cmp	#9,	r15	;#0x0009
+    8304:	03 2c       	jc	$+8      	;abs 0x830c
+    8306:	1f 93       	cmp	#1,	r15	;r3 As==01
+    8308:	08 24       	jz	$+18     	;abs 0x831a
+    830a:	1f 3c       	jmp	$+64     	;abs 0x834a
+    830c:	3f 90 0c 00 	cmp	#12,	r15	;#0x000c
+    8310:	10 24       	jz	$+34     	;abs 0x8332
+    8312:	3f 90 10 00 	cmp	#16,	r15	;#0x0010
+    8316:	13 24       	jz	$+40     	;abs 0x833e
+    8318:	18 3c       	jmp	$+50     	;abs 0x834a
+	case 1:
+		loops = 1000 >> 2;
+    831a:	b4 40 fa 00 	mov	#250,	-8(r4)	;#0x00fa, 0xfff8(r4)
+    831e:	f8 ff 
+    8320:	84 43 fa ff 	mov	#0,	-6(r4)	;r3 As==00, 0xfffa(r4)
+		break;
+    8324:	18 3c       	jmp	$+50     	;abs 0x8356
+	case 8:
+		loops = 1000 << 1;
+    8326:	b4 40 d0 07 	mov	#2000,	-8(r4)	;#0x07d0, 0xfff8(r4)
+    832a:	f8 ff 
+    832c:	84 43 fa ff 	mov	#0,	-6(r4)	;r3 As==00, 0xfffa(r4)
+		break;
+    8330:	12 3c       	jmp	$+38     	;abs 0x8356
+	case 12:
+		loops = 1000 * 3;
+    8332:	b4 40 b8 0b 	mov	#3000,	-8(r4)	;#0x0bb8, 0xfff8(r4)
+    8336:	f8 ff 
+    8338:	84 43 fa ff 	mov	#0,	-6(r4)	;r3 As==00, 0xfffa(r4)
+		break;
+    833c:	0c 3c       	jmp	$+26     	;abs 0x8356
+	case 16:
+		loops = 1000 << 2;
+    833e:	b4 40 a0 0f 	mov	#4000,	-8(r4)	;#0x0fa0, 0xfff8(r4)
+    8342:	f8 ff 
+    8344:	84 43 fa ff 	mov	#0,	-6(r4)	;r3 As==00, 0xfffa(r4)
+		break;
+    8348:	06 3c       	jmp	$+14     	;abs 0x8356
+	default: /* arbitrary value to 1MHZ */
+		loops = 1000 >> 2;
+    834a:	b4 40 fa 00 	mov	#250,	-8(r4)	;#0x00fa, 0xfff8(r4)
+    834e:	f8 ff 
+    8350:	84 43 fa ff 	mov	#0,	-6(r4)	;r3 As==00, 0xfffa(r4)
+		break;
+    8354:	03 43       	nop			
+	}
+
+	/* calling delay_usec() introduces an high
+	 * clock skew for low mclk frequencies
+	 */
+	for (i = 0; i < ms; i++) {
+    8356:	84 43 f6 ff 	mov	#0,	-10(r4)	;r3 As==00, 0xfff6(r4)
+    835a:	08 3c       	jmp	$+18     	;abs 0x836c
+		loop_4_cycles(loops);
+    835c:	1e 44 f8 ff 	mov	-8(r4),	r14	;0xfff8(r4)
+    8360:	1f 44 fa ff 	mov	-6(r4),	r15	;0xfffa(r4)
+    8364:	b0 12 36 82 	call	#0x8236	
+	}
+
+	/* calling delay_usec() introduces an high
+	 * clock skew for low mclk frequencies
+	 */
+	for (i = 0; i < ms; i++) {
+    8368:	94 53 f6 ff 	inc	-10(r4)	;0xfff6(r4)
+    836c:	94 94 fc ff 	cmp	-4(r4),	-10(r4)	;0xfffc(r4), 0xfff6(r4)
+    8370:	f6 ff 
+    8372:	f4 2b       	jnc	$-22     	;abs 0x835c
+		loop_4_cycles(loops);
+	}
+}
+    8374:	31 52       	add	#8,	r1	;r2 As==11
+    8376:	34 41       	pop	r4		
+    8378:	30 41       	ret			
+
+0000837a <led_green_off>:
+#define LED_PORT       P1OUT
+#define BIT_GREEN      BIT1
+#define BIT_RED        BIT0
+
+void led_green_off(void)
+{
+    837a:	04 12       	push	r4		
+    837c:	04 41       	mov	r1,	r4	
+    837e:	24 53       	incd	r4		
+	LED_PORT &= ~BIT_GREEN;
+    8380:	5f 42 21 00 	mov.b	&0x0021,r15	
+    8384:	7f f0 fd ff 	and.b	#-3,	r15	;#0xfffd
+    8388:	c2 4f 21 00 	mov.b	r15,	&0x0021	
+}
+    838c:	34 41       	pop	r4		
+    838e:	30 41       	ret			
+
+00008390 <led_green_on>:
+
+void led_green_on(void)
+{
+    8390:	04 12       	push	r4		
+    8392:	04 41       	mov	r1,	r4	
+    8394:	24 53       	incd	r4		
+	LED_PORT |= BIT_GREEN;
+    8396:	5f 42 21 00 	mov.b	&0x0021,r15	
+    839a:	6f d3       	bis.b	#2,	r15	;r3 As==10
+    839c:	c2 4f 21 00 	mov.b	r15,	&0x0021	
+}
+    83a0:	34 41       	pop	r4		
+    83a2:	30 41       	ret			
+
+000083a4 <led_green_switch>:
+
+void led_green_switch(void)
+{
+    83a4:	04 12       	push	r4		
+    83a6:	04 41       	mov	r1,	r4	
+    83a8:	24 53       	incd	r4		
+	LED_PORT ^= BIT_GREEN;
+    83aa:	5f 42 21 00 	mov.b	&0x0021,r15	
+    83ae:	6f e3       	xor.b	#2,	r15	;r3 As==10
+    83b0:	c2 4f 21 00 	mov.b	r15,	&0x0021	
+}
+    83b4:	34 41       	pop	r4		
+    83b6:	30 41       	ret			
+
+000083b8 <led_red_off>:
+
+void led_red_off(void)
+{
+    83b8:	04 12       	push	r4		
+    83ba:	04 41       	mov	r1,	r4	
+    83bc:	24 53       	incd	r4		
+	LED_PORT &= ~BIT_RED;
+    83be:	5f 42 21 00 	mov.b	&0x0021,r15	
+    83c2:	7f f0 fe ff 	and.b	#-2,	r15	;#0xfffe
+    83c6:	c2 4f 21 00 	mov.b	r15,	&0x0021	
+}
+    83ca:	34 41       	pop	r4		
+    83cc:	30 41       	ret			
+
+000083ce <led_red_on>:
+
+void led_red_on(void)
+{
+    83ce:	04 12       	push	r4		
+    83d0:	04 41       	mov	r1,	r4	
+    83d2:	24 53       	incd	r4		
+	LED_PORT |= BIT_RED;
+    83d4:	5f 42 21 00 	mov.b	&0x0021,r15	
+    83d8:	5f d3       	bis.b	#1,	r15	;r3 As==01
+    83da:	c2 4f 21 00 	mov.b	r15,	&0x0021	
+}
+    83de:	34 41       	pop	r4		
+    83e0:	30 41       	ret			
+
+000083e2 <led_red_switch>:
+
+void led_red_switch(void)
+{
+    83e2:	04 12       	push	r4		
+    83e4:	04 41       	mov	r1,	r4	
+    83e6:	24 53       	incd	r4		
+	LED_PORT ^= BIT_RED;
+    83e8:	5f 42 21 00 	mov.b	&0x0021,r15	
+    83ec:	5f e3       	xor.b	#1,	r15	;r3 As==01
+    83ee:	c2 4f 21 00 	mov.b	r15,	&0x0021	
+}
+    83f2:	34 41       	pop	r4		
+    83f4:	30 41       	ret			
+
+000083f6 <leds_off>:
+
+void leds_off(void)
+{
+    83f6:	04 12       	push	r4		
+    83f8:	04 41       	mov	r1,	r4	
+    83fa:	24 53       	incd	r4		
+	LED_PORT &= ~(BIT_GREEN | BIT_RED);
+    83fc:	5f 42 21 00 	mov.b	&0x0021,r15	
+    8400:	7f f0 fc ff 	and.b	#-4,	r15	;#0xfffc
+    8404:	c2 4f 21 00 	mov.b	r15,	&0x0021	
+}
+    8408:	34 41       	pop	r4		
+    840a:	30 41       	ret			
+
+0000840c <leds_on>:
+
+void leds_on(void)
+{
+    840c:	04 12       	push	r4		
+    840e:	04 41       	mov	r1,	r4	
+    8410:	24 53       	incd	r4		
+	LED_PORT |= (BIT_GREEN | BIT_RED);
+    8412:	5f 42 21 00 	mov.b	&0x0021,r15	
+    8416:	7f d0 03 00 	bis.b	#3,	r15	;#0x0003
+    841a:	c2 4f 21 00 	mov.b	r15,	&0x0021	
+}
+    841e:	34 41       	pop	r4		
+    8420:	30 41       	ret			
+
+00008422 <leds_init>:
+
+void leds_init(void)
+{
+    8422:	04 12       	push	r4		
+    8424:	04 41       	mov	r1,	r4	
+    8426:	24 53       	incd	r4		
+	P1OUT &= ~(BIT_GREEN | BIT_RED);
+    8428:	5f 42 21 00 	mov.b	&0x0021,r15	
+    842c:	7f f0 fc ff 	and.b	#-4,	r15	;#0xfffc
+    8430:	c2 4f 21 00 	mov.b	r15,	&0x0021	
+	P1DIR |= (BIT_GREEN | BIT_RED);
+    8434:	5f 42 22 00 	mov.b	&0x0022,r15	
+    8438:	7f d0 03 00 	bis.b	#3,	r15	;#0x0003
+    843c:	c2 4f 22 00 	mov.b	r15,	&0x0022	
+	P1SEL &= ~(BIT_GREEN | BIT_RED);
+    8440:	5f 42 26 00 	mov.b	&0x0026,r15	
+    8444:	7f f0 fc ff 	and.b	#-4,	r15	;#0xfffc
+    8448:	c2 4f 26 00 	mov.b	r15,	&0x0026	
+	leds_off();
+    844c:	b0 12 f6 83 	call	#0x83f6	
+}
+    8450:	34 41       	pop	r4		
+    8452:	30 41       	ret			
+
+00008454 <watchdog_stop>:
+#endif
+
+static int watchdog_backup;
+
+void watchdog_stop()
+{
+    8454:	04 12       	push	r4		
+    8456:	04 41       	mov	r1,	r4	
+    8458:	24 53       	incd	r4		
+	/* the upper 8 bits are a password */
+	watchdog_backup = WDTCTL & 0x00FF;
+    845a:	1f 42 20 01 	mov	&0x0120,r15	
+    845e:	3f f0 ff 00 	and	#255,	r15	;#0x00ff
+    8462:	82 4f 02 02 	mov	r15,	&0x0202	
+	WDTCTL = WDTPW | WDTHOLD;
+    8466:	b2 40 80 5a 	mov	#23168,	&0x0120	;#0x5a80
+    846a:	20 01 
+}
+    846c:	34 41       	pop	r4		
+    846e:	30 41       	ret			
+
+00008470 <watchdog_restore>:
+
+void watchdog_restore()
+{
+    8470:	04 12       	push	r4		
+    8472:	04 41       	mov	r1,	r4	
+    8474:	24 53       	incd	r4		
+	WDTCTL = WDTPW | watchdog_backup;
+    8476:	1f 42 02 02 	mov	&0x0202,r15	
+    847a:	3f d0 00 5a 	bis	#23040,	r15	;#0x5a00
+    847e:	82 4f 20 01 	mov	r15,	&0x0120	
+}
+    8482:	34 41       	pop	r4		
+    8484:	30 41       	ret			
+
+00008486 <_unexpected_>:
+    8486:	00 13       	reti			
+
+Disassembly of section .vectors:
+
+0000ffe0 <__ivtbl_16>:
+    ffe0:	6a 80 6a 80 6a 80 6a 80 6a 80 6a 80 6a 80 6a 80     j.j.j.j.j.j.j.j.
+    fff0:	6a 80 6a 80 6a 80 6a 80 6a 80 6a 80 6a 80 00 80     j.j.j.j.j.j.j...

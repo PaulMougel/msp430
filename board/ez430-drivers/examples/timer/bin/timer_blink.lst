@@ -1,0 +1,1369 @@
+
+bin/timer_blink.elf:     file format elf32-msp430
+
+SYMBOL TABLE:
+00008000 l    d  .text	00000000 .text
+00000200 l    d  .bss	00000000 .bss
+0000020e l    d  .noinit	00000000 .noinit
+0000ffe0 l    d  .vectors	00000000 .vectors
+00000000 l    d  .debug_aranges	00000000 .debug_aranges
+00000000 l    d  .debug_info	00000000 .debug_info
+00000000 l    d  .debug_abbrev	00000000 .debug_abbrev
+00000000 l    d  .debug_line	00000000 .debug_line
+00000000 l    d  .debug_frame	00000000 .debug_frame
+00000000 l    d  .debug_str	00000000 .debug_str
+00000000 l    d  .debug_loc	00000000 .debug_loc
+00000000 l    d  .debug_ranges	00000000 .debug_ranges
+00000000 l    df *ABS*	00000000 main.c
+00000200 l     O .bss	00000002 b.1566
+0000807e l       .text	00000000 __br_unexpected_
+00000000 l    df *ABS*	00000000 clock.c
+00000202 l     O .bss	00000002 mclk_freq_mhz
+000080be l     F .text	000000c0 set_mcu_speed
+00000000 l    df *ABS*	00000000 leds.c
+00000000 l    df *ABS*	00000000 timer.c
+00000204 l     O .bss	00000002 timerA_cb
+00000206 l     O .bss	00000002 timerA_wakeup
+00000208 l     O .bss	00000002 timerB_cb
+0000020a l     O .bss	00000002 timerB_wakeup
+00000000 l    df *ABS*	00000000 watchdog.c
+0000020c l     O .bss	00000002 watchdog_backup
+00000057 g       *ABS*	00000000 __BCSCTL1
+00008228 g     F .text	00000014 set_mcu_speed_dco_mclk_16MHz_smclk_16MHz
+00000174 g       *ABS*	00000000 __TACCR1
+00000000 g       *ABS*	00000000 __data_size
+0000807e  w      .text	00000000 __isr_14
+00000128 g       *ABS*	00000000 __FCTL1
+00008200 g     F .text	00000014 set_mcu_speed_dco_mclk_12MHz_smclk_3MHz
+00000024 g       *ABS*	00000000 __P1IES
+0000004b g       *ABS*	00000000 __ADC10AE1
+00000069 g       *ABS*	00000000 __UCB0CTL1
+0000807e  w      .text	00000000 __isr_4
+00000002 g       *ABS*	00000000 __IFG1
+00000060 g       *ABS*	00000000 __UCA0CTL0
+000081a2 g     F .text	00000012 set_mcu_speed_dco_mclk_8MHz_smclk_4MHz
+000085c8 g     F .text	00000018 timerB_register_cb
+0000012e g       *ABS*	00000000 __TAIV
+00000000 g       .vectors	00000000 _efartext
+00000001 g       *ABS*	00000000 __IE2
+0000002b g       *ABS*	00000000 __P2IFG
+0000001a g       *ABS*	00000000 __P3DIR
+00008692 g       *ABS*	00000000 _etext
+00000190 g       *ABS*	00000000 __TBR
+00008496 g     F .text	00000038 Timer_A
+000010f8 g       *ABS*	00000000 __CALDCO_16MHZ
+0000001d g       *ABS*	00000000 __P4OUT
+0000000e g       *ABS*	00000000 __bss_size
+000010fd g       *ABS*	00000000 __CALBC1_8MHZ
+00008278 g     F .text	00000010 loop_4_cycles
+00008000  w      .text	00000000 __watchdog_support
+00008078  w      .text	00000000 __stop_progExec__
+0000002d g       *ABS*	00000000 __P2IE
+00000192 g       *ABS*	00000000 __TBCCR0
+0000807e  w      .text	00000000 __isr_11
+00000186 g       *ABS*	00000000 __TBCCTL2
+000081ec g     F .text	00000014 set_mcu_speed_dco_mclk_12MHz_smclk_6MHz
+00000025 g       *ABS*	00000000 __P1IE
+0000006b g       *ABS*	00000000 __UCB0BR1
+00008650 g     F .text	0000000e timerB_stop
+00000049 g       *ABS*	00000000 __ADC10DTC1
+00000066 g       *ABS*	00000000 __UCA0RXBUF
+00000061 g       *ABS*	00000000 __UCA0CTL1
+000081c6 g     F .text	00000012 set_mcu_speed_dco_mclk_8MHz_smclk_1MHz
+00008250 g     F .text	00000014 set_mcu_speed_dco_mclk_16MHz_smclk_4MHz
+00000182 g       *ABS*	00000000 __TBCCTL0
+0000006d g       *ABS*	00000000 __UCB0STAT
+0000807e  w      .text	00000000 __isr_5
+00000063 g       *ABS*	00000000 __UCA0BR1
+00008692 g       *ABS*	00000000 __data_load_start
+0000844e g     F .text	00000016 leds_on
+0000807e g       .text	00000000 __dtors_end
+00000053 g       *ABS*	00000000 __BCSCTL3
+000083e6 g     F .text	00000014 led_green_switch
+000001bc g       *ABS*	00000000 __ADC10SA
+00000166 g       *ABS*	00000000 __TACCTL2
+00000065 g       *ABS*	00000000 __UCA0STAT
+000083bc g     F .text	00000016 led_green_off
+0000807e  w      .text	00000000 __isr_2
+00000160 g       *ABS*	00000000 __TACTL
+0000012c g       *ABS*	00000000 __FCTL3
+000084e4 g     F .text	00000018 timerA_register_cb
+0000807e  w      .text	00000000 __isr_10
+000080b0 g     F .text	0000000e get_mclk_freq_mhz
+0000002e g       *ABS*	00000000 __P2SEL
+00000180 g       *ABS*	00000000 __TBCTL
+00008548 g     F .text	00000024 timerA_start_milliseconds
+000081b4 g     F .text	00000012 set_mcu_speed_dco_mclk_8MHz_smclk_2MHz
+000010f9 g       *ABS*	00000000 __CALBC1_16MHZ
+000000c3 g       *ABS*	00000000 __OA1CTL1
+00000023 g       *ABS*	00000000 __P1IFG
+000010fb g       *ABS*	00000000 __CALBC1_12MHZ
+0000004a g       *ABS*	00000000 __ADC10AE0
+0000011a g       *ABS*	00000000 __UCB0I2CSA
+00008410 g     F .text	00000014 led_red_on
+00000172 g       *ABS*	00000000 __TACCR0
+00008438 g     F .text	00000016 leds_off
+00000056 g       *ABS*	00000000 __DCOCTL
+00000003 g       *ABS*	00000000 __IFG2
+0000020e g     O .noinit	00000002 __wdt_clear_value
+0000001b g       *ABS*	00000000 __P3SEL
+0000856c g     F .text	0000000e timerA_stop
+0000807e  w      .text	00000000 __isr_7
+0000ffe0 g     O .vectors	00000020 __ivtbl_16
+0000006c g       *ABS*	00000000 __UCB0I2CIE
+0000006a g       *ABS*	00000000 __UCB0BR0
+00000028 g       *ABS*	00000000 __P2IN
+000084fc g     F .text	00000018 timerA_set_wakeup
+00000118 g       *ABS*	00000000 __UCB0I2COA
+00000184 g       *ABS*	00000000 __TBCCTL1
+000001b4 g       *ABS*	00000000 __ADC10MEM
+000083fa g     F .text	00000016 led_red_off
+0000807e  w      .text	00000000 __isr_0
+00000029 g       *ABS*	00000000 __P2OUT
+0000012a g       *ABS*	00000000 __FCTL2
+00000064 g       *ABS*	00000000 __UCA0MCTL
+00008028  w      .text	00000000 __do_clear_bss
+00000021 g       *ABS*	00000000 __P1OUT
+0000002c g       *ABS*	00000000 __P2IES
+00000026 g       *ABS*	00000000 __P1SEL
+0000823c g     F .text	00000014 set_mcu_speed_dco_mclk_16MHz_smclk_8MHz
+0000865e g     F .text	0000001c watchdog_stop
+0000817e g     F .text	00000012 set_mcu_speed_dco_mclk_1MHz_smclk_1MHz
+00008214 g     F .text	00000014 set_mcu_speed_dco_mclk_12MHz_smclk_1_5MHz
+000085b2 g     F .text	00000016 timerB_init
+00000027 g       *ABS*	00000000 __P1REN
+000000c0 g       *ABS*	00000000 __OA0CTL0
+00008264 g     F .text	00000014 set_mcu_speed_dco_mclk_16MHz_smclk_2MHz
+00008690  w      .text	00000000 _unexpected_
+0000807e  w      .text	00000000 __isr_8
+0000807e  w      .text	00000000 __isr_3
+00008424 g     F .text	00000014 led_red_switch
+000010fc g       *ABS*	00000000 __CALDCO_8MHZ
+00008000  w      .text	00000000 _reset_vector__
+0000807e g       .text	00000000 __ctors_start
+0000807e  w      .text	00000000 __isr_12
+000010fa g       *ABS*	00000000 __CALDCO_12MHZ
+00000018 g       *ABS*	00000000 __P3IN
+00008010  w      .text	00000000 __do_copy_data
+00000200 g       .bss	00000000 __bss_start
+0000803e g     F .text	0000003a main
+00000176 g       *ABS*	00000000 __TACCR2
+0000832e g     F .text	0000008e delay_ms
+000000c2 g       *ABS*	00000000 __OA1CTL0
+0000857a g       .text	00000000 __isr_13
+00008288 g     F .text	000000a6 delay_usec
+00000170 g       *ABS*	00000000 __TAR
+0000001e g       *ABS*	00000000 __P4DIR
+000084ce g     F .text	00000016 timerA_init
+00000162 g       *ABS*	00000000 __TACCTL0
+00010000 g       .vectors	00000000 _vectors_end
+000085e0 g     F .text	00000018 timerB_set_wakeup
+0000002a g       *ABS*	00000000 __P2DIR
+00000068 g       *ABS*	00000000 __UCB0CTL0
+0000002f g       *ABS*	00000000 __P2REN
+0000857a g     F .text	00000038 Timer_B
+0000006e g       *ABS*	00000000 __UCB0RXBUF
+000001b0 g       *ABS*	00000000 __ADC10CTL0
+000080a2 g     F .text	0000000e red_led_cb
+00008496 g       .text	00000000 __isr_9
+0000005e g       *ABS*	00000000 __UCA0IRTCTL
+000010fe g       *ABS*	00000000 __CALDCO_1MHZ
+00000067 g       *ABS*	00000000 __UCA0TXBUF
+0000800c  w      .text	00000000 __init_stack
+0000005d g       *ABS*	00000000 __UCA0ABCTL
+00008514 g     F .text	00000034 timerA_start_ticks
+00000019 g       *ABS*	00000000 __P3OUT
+000000c1 g       *ABS*	00000000 __OA0CTL1
+000081d8 g     F .text	00000014 set_mcu_speed_dco_mclk_12MHz_smclk_12MHz
+0000807e g       .text	00000000 __dtors_start
+0000807e  w      .text	00000000 __isr_6
+0000807e g       .text	00000000 __ctors_end
+00000062 g       *ABS*	00000000 __UCA0BR0
+00000600 g       *ABS*	00000000 __stack
+00008190 g     F .text	00000012 set_mcu_speed_dco_mclk_8MHz_smclk_8MHz
+0000807e  w      .text	00000000 __isr_1
+00000200 g       .text	00000000 _edata
+00000210 g       *ABS*	00000000 _end
+00000194 g       *ABS*	00000000 __TBCCR1
+00000048 g       *ABS*	00000000 __ADC10DTC0
+0000011e g       *ABS*	00000000 __TBIV
+000001b2 g       *ABS*	00000000 __ADC10CTL1
+000083d2 g     F .text	00000014 led_green_on
+0000867a g     F .text	00000016 watchdog_restore
+00000058 g       *ABS*	00000000 __BCSCTL2
+00008078  w      .text	00000000 _endless_loop__
+0000001f g       *ABS*	00000000 __P4SEL
+00000196 g       *ABS*	00000000 __TBCCR2
+00000022 g       *ABS*	00000000 __P1DIR
+0000005f g       *ABS*	00000000 __UCA0IRRCTL
+00000010 g       *ABS*	00000000 __P3REN
+00000164 g       *ABS*	00000000 __TACCTL1
+0000006f g       *ABS*	00000000 __UCB0TXBUF
+000085f8 g     F .text	00000034 timerB_start_ticks
+000010ff g       *ABS*	00000000 __CALBC1_1MHZ
+00008010  w      .text	00000000 __low_level_init
+00000011 g       *ABS*	00000000 __P4REN
+00000200 g       .text	00000000 __data_start
+0000862c g     F .text	00000024 timerB_start_milliseconds
+00000120 g       *ABS*	00000000 __WDTCTL
+00000000 g       *ABS*	00000000 __IE1
+00000020 g       *ABS*	00000000 __P1IN
+0000001c g       *ABS*	00000000 __P4IN
+00008082 g     F .text	00000020 green_led_cb
+00008464 g     F .text	00000032 leds_init
+
+
+
+Disassembly of section .text:
+
+00008000 <__watchdog_support>:
+    8000:	55 42 20 01 	mov.b	&0x0120,r5	
+    8004:	35 d0 08 5a 	bis	#23048,	r5	;#0x5a08
+    8008:	82 45 0e 02 	mov	r5,	&0x020e	
+
+0000800c <__init_stack>:
+    800c:	31 40 00 06 	mov	#1536,	r1	;#0x0600
+
+00008010 <__do_copy_data>:
+    8010:	3f 40 00 00 	mov	#0,	r15	;#0x0000
+    8014:	0f 93       	tst	r15		
+    8016:	08 24       	jz	$+18     	;abs 0x8028
+    8018:	92 42 0e 02 	mov	&0x020e,&0x0120	
+    801c:	20 01 
+    801e:	2f 83       	decd	r15		
+    8020:	9f 4f 92 86 	mov	-31086(r15),512(r15);0x8692(r15), 0x0200(r15)
+    8024:	00 02 
+    8026:	f8 23       	jnz	$-14     	;abs 0x8018
+
+00008028 <__do_clear_bss>:
+    8028:	3f 40 0e 00 	mov	#14,	r15	;#0x000e
+    802c:	0f 93       	tst	r15		
+    802e:	07 24       	jz	$+16     	;abs 0x803e
+    8030:	92 42 0e 02 	mov	&0x020e,&0x0120	
+    8034:	20 01 
+    8036:	1f 83       	dec	r15		
+    8038:	cf 43 00 02 	mov.b	#0,	512(r15);r3 As==00, 0x0200(r15)
+    803c:	f9 23       	jnz	$-12     	;abs 0x8030
+
+0000803e <main>:
+/* ************************************************** */
+/* ************************************************** */
+/* ************************************************** */
+
+int main(void)
+{
+    803e:	04 41       	mov	r1,	r4	
+    8040:	24 53       	incd	r4		
+  watchdog_stop();
+    8042:	b0 12 5e 86 	call	#0x865e	
+
+  /* leds */
+  leds_init();
+    8046:	b0 12 64 84 	call	#0x8464	
+  leds_off();
+    804a:	b0 12 38 84 	call	#0x8438	
+  
+  /* switch to running freq mode            */
+  set_mcu_speed_dco_mclk_8MHz_smclk_4MHz ();
+    804e:	b0 12 a2 81 	call	#0x81a2	
+
+  /* timer settings */
+  timerB_init();
+    8052:	b0 12 b2 85 	call	#0x85b2	
+  timerB_register_cb(green_led_cb);
+    8056:	3f 40 82 80 	mov	#-32638,r15	;#0x8082
+    805a:	b0 12 c8 85 	call	#0x85c8	
+  /* uncomment to blink red led */
+  timerB_set_wakeup(1); 
+    805e:	1f 43       	mov	#1,	r15	;r3 As==01
+    8060:	b0 12 e0 85 	call	#0x85e0	
+  /* ACLK ~ 12kHz, 10000 ticks = 0.83s */
+  timerB_start_ticks(10000); 
+    8064:	3f 40 10 27 	mov	#10000,	r15	;#0x2710
+    8068:	b0 12 f8 85 	call	#0x85f8	
+  /*timerA_init();
+  timerA_register_cb(red_led_cb);
+  timerA_start_ticks(10000 / 2);*/ 
+
+  /* enable interrupt */
+  eint();
+    806c:	32 d2       	eint			
+  
+  while (1)
+    {
+      LPM1;
+    806e:	32 d0 50 00 	bis	#80,	r2	;#0x0050
+      led_red_switch();
+    8072:	b0 12 24 84 	call	#0x8424	
+    }
+    8076:	fb 3f       	jmp	$-8      	;abs 0x806e
+
+00008078 <__stop_progExec__>:
+    8078:	32 d0 f0 00 	bis	#240,	r2	;#0x00f0
+    807c:	fd 3f       	jmp	$-4      	;abs 0x8078
+
+0000807e <__ctors_end>:
+    807e:	30 40 90 86 	br	#0x8690	
+
+00008082 <green_led_cb>:
+/* ************************************************** */
+/* ************************************************** */
+/* ************************************************** */
+
+void green_led_cb(void)
+{
+    8082:	04 12       	push	r4		
+    8084:	04 41       	mov	r1,	r4	
+    8086:	24 53       	incd	r4		
+  static int b = 0;
+
+  if (b << 16 == 1) {
+    8088:	1f 42 00 02 	mov	&0x0200,r15	
+    808c:	1f 93       	cmp	#1,	r15	;r3 As==01
+    808e:	05 20       	jnz	$+12     	;abs 0x809a
+		led_green_switch();
+    8090:	b0 12 e6 83 	call	#0x83e6	
+		b = 0;
+    8094:	82 43 00 02 	mov	#0,	&0x0200	;r3 As==00
+    8098:	02 3c       	jmp	$+6      	;abs 0x809e
+	} else {
+		b = 1;
+    809a:	92 43 00 02 	mov	#1,	&0x0200	;r3 As==01
+	}
+}
+    809e:	34 41       	pop	r4		
+    80a0:	30 41       	ret			
+
+000080a2 <red_led_cb>:
+
+void red_led_cb(void)
+{
+    80a2:	04 12       	push	r4		
+    80a4:	04 41       	mov	r1,	r4	
+    80a6:	24 53       	incd	r4		
+  led_red_switch();
+    80a8:	b0 12 24 84 	call	#0x8424	
+}
+    80ac:	34 41       	pop	r4		
+    80ae:	30 41       	ret			
+
+000080b0 <get_mclk_freq_mhz>:
+ ***************************************************************/
+
+#define WAIT_CRISTAL() do { } while (0)
+
+int get_mclk_freq_mhz()
+{
+    80b0:	04 12       	push	r4		
+    80b2:	04 41       	mov	r1,	r4	
+    80b4:	24 53       	incd	r4		
+	return mclk_freq_mhz;
+    80b6:	1f 42 02 02 	mov	&0x0202,r15	
+}
+    80ba:	34 41       	pop	r4		
+    80bc:	30 41       	ret			
+
+000080be <set_mcu_speed>:
+
+static void set_mcu_speed(unsigned char dco_mhz, unsigned char smclk_divider)
+{
+    80be:	04 12       	push	r4		
+    80c0:	04 41       	mov	r1,	r4	
+    80c2:	24 53       	incd	r4		
+    80c4:	21 83       	decd	r1		
+    80c6:	c4 4f fc ff 	mov.b	r15,	-4(r4)	;0xfffc(r4)
+    80ca:	c4 4e fd ff 	mov.b	r14,	-3(r4)	;0xfffd(r4)
+	switch (dco_mhz) {
+    80ce:	5f 44 fc ff 	mov.b	-4(r4),	r15	;0xfffc(r4)
+    80d2:	3f 92       	cmp	#8,	r15	;r2 As==11
+    80d4:	16 24       	jz	$+46     	;abs 0x8102
+    80d6:	3f 90 09 00 	cmp	#9,	r15	;#0x0009
+    80da:	03 34       	jge	$+8      	;abs 0x80e2
+    80dc:	1f 93       	cmp	#1,	r15	;r3 As==01
+    80de:	08 24       	jz	$+18     	;abs 0x80f0
+    80e0:	2b 3c       	jmp	$+88     	;abs 0x8138
+    80e2:	3f 90 0c 00 	cmp	#12,	r15	;#0x000c
+    80e6:	16 24       	jz	$+46     	;abs 0x8114
+    80e8:	3f 90 10 00 	cmp	#16,	r15	;#0x0010
+    80ec:	1c 24       	jz	$+58     	;abs 0x8126
+    80ee:	24 3c       	jmp	$+74     	;abs 0x8138
+	case 1:
+		BCSCTL1 = CALBC1_1MHZ;
+    80f0:	5f 42 ff 10 	mov.b	&0x10ff,r15	
+    80f4:	c2 4f 57 00 	mov.b	r15,	&0x0057	
+		DCOCTL = CALDCO_1MHZ;
+    80f8:	5f 42 fe 10 	mov.b	&0x10fe,r15	
+    80fc:	c2 4f 56 00 	mov.b	r15,	&0x0056	
+		break;
+    8100:	1b 3c       	jmp	$+56     	;abs 0x8138
+	case 8:
+		BCSCTL1 = CALBC1_8MHZ;
+    8102:	5f 42 fd 10 	mov.b	&0x10fd,r15	
+    8106:	c2 4f 57 00 	mov.b	r15,	&0x0057	
+		DCOCTL = CALDCO_8MHZ;
+    810a:	5f 42 fc 10 	mov.b	&0x10fc,r15	
+    810e:	c2 4f 56 00 	mov.b	r15,	&0x0056	
+		break;
+    8112:	12 3c       	jmp	$+38     	;abs 0x8138
+	case 12:
+		BCSCTL1 = CALBC1_12MHZ;
+    8114:	5f 42 fb 10 	mov.b	&0x10fb,r15	
+    8118:	c2 4f 57 00 	mov.b	r15,	&0x0057	
+		DCOCTL = CALDCO_12MHZ;
+    811c:	5f 42 fa 10 	mov.b	&0x10fa,r15	
+    8120:	c2 4f 56 00 	mov.b	r15,	&0x0056	
+		break;
+    8124:	09 3c       	jmp	$+20     	;abs 0x8138
+	case 16:
+		BCSCTL1 = CALBC1_16MHZ;
+    8126:	5f 42 f9 10 	mov.b	&0x10f9,r15	
+    812a:	c2 4f 57 00 	mov.b	r15,	&0x0057	
+		DCOCTL = CALDCO_16MHZ;
+    812e:	5f 42 f8 10 	mov.b	&0x10f8,r15	
+    8132:	c2 4f 56 00 	mov.b	r15,	&0x0056	
+		break;
+    8136:	03 43       	nop			
+	}
+	switch (smclk_divider) {
+    8138:	5f 44 fd ff 	mov.b	-3(r4),	r15	;0xfffd(r4)
+    813c:	2f 93       	cmp	#2,	r15	;r3 As==10
+    813e:	0e 24       	jz	$+30     	;abs 0x815c
+    8140:	3f 90 03 00 	cmp	#3,	r15	;#0x0003
+    8144:	03 34       	jge	$+8      	;abs 0x814c
+    8146:	1f 93       	cmp	#1,	r15	;r3 As==01
+    8148:	06 24       	jz	$+14     	;abs 0x8156
+    814a:	12 3c       	jmp	$+38     	;abs 0x8170
+    814c:	2f 92       	cmp	#4,	r15	;r2 As==10
+    814e:	09 24       	jz	$+20     	;abs 0x8162
+    8150:	3f 92       	cmp	#8,	r15	;r2 As==11
+    8152:	0a 24       	jz	$+22     	;abs 0x8168
+    8154:	0d 3c       	jmp	$+28     	;abs 0x8170
+	case 1:
+		/* SELM_0: MCL Source Select 0: DCOCLK */
+		/* DIVS_1: SMCLK divider /1 */
+		BCSCTL2 = SELM_0 | DIVS_0;
+    8156:	c2 43 58 00 	mov.b	#0,	&0x0058	;r3 As==00
+		break;
+    815a:	0a 3c       	jmp	$+22     	;abs 0x8170
+	case 2:
+		/* DIVS_1: SMCLK divider /2 */
+		BCSCTL2 = SELM_0 | DIVS_1;
+    815c:	e2 43 58 00 	mov.b	#2,	&0x0058	;r3 As==10
+		break;
+    8160:	07 3c       	jmp	$+16     	;abs 0x8170
+	case 4:
+		/* DIVS_2: SMCLK divider /4 */
+		BCSCTL2 = SELM_0 | DIVS_2;
+    8162:	e2 42 58 00 	mov.b	#4,	&0x0058	;r2 As==10
+		break;
+    8166:	04 3c       	jmp	$+10     	;abs 0x8170
+	case 8:
+		/* DIVS_3: SMCLK divider /8 */
+		BCSCTL2 = SELM_0 | DIVS_3;
+    8168:	f2 40 06 00 	mov.b	#6,	&0x0058	;#0x0006
+    816c:	58 00 
+		break;
+    816e:	03 43       	nop			
+	}
+
+	WAIT_CRISTAL();
+
+	mclk_freq_mhz = dco_mhz;
+    8170:	5f 44 fc ff 	mov.b	-4(r4),	r15	;0xfffc(r4)
+    8174:	82 4f 02 02 	mov	r15,	&0x0202	
+}
+    8178:	21 53       	incd	r1		
+    817a:	34 41       	pop	r4		
+    817c:	30 41       	ret			
+
+0000817e <set_mcu_speed_dco_mclk_1MHz_smclk_1MHz>:
+
+void set_mcu_speed_dco_mclk_1MHz_smclk_1MHz()
+{
+    817e:	04 12       	push	r4		
+    8180:	04 41       	mov	r1,	r4	
+    8182:	24 53       	incd	r4		
+	set_mcu_speed(1, 1);
+    8184:	5e 43       	mov.b	#1,	r14	;r3 As==01
+    8186:	5f 43       	mov.b	#1,	r15	;r3 As==01
+    8188:	b0 12 be 80 	call	#0x80be	
+}
+    818c:	34 41       	pop	r4		
+    818e:	30 41       	ret			
+
+00008190 <set_mcu_speed_dco_mclk_8MHz_smclk_8MHz>:
+
+void set_mcu_speed_dco_mclk_8MHz_smclk_8MHz()
+{
+    8190:	04 12       	push	r4		
+    8192:	04 41       	mov	r1,	r4	
+    8194:	24 53       	incd	r4		
+	set_mcu_speed(8, 1);
+    8196:	5e 43       	mov.b	#1,	r14	;r3 As==01
+    8198:	7f 42       	mov.b	#8,	r15	;r2 As==11
+    819a:	b0 12 be 80 	call	#0x80be	
+}
+    819e:	34 41       	pop	r4		
+    81a0:	30 41       	ret			
+
+000081a2 <set_mcu_speed_dco_mclk_8MHz_smclk_4MHz>:
+
+void set_mcu_speed_dco_mclk_8MHz_smclk_4MHz()
+{
+    81a2:	04 12       	push	r4		
+    81a4:	04 41       	mov	r1,	r4	
+    81a6:	24 53       	incd	r4		
+	set_mcu_speed(8, 2);
+    81a8:	6e 43       	mov.b	#2,	r14	;r3 As==10
+    81aa:	7f 42       	mov.b	#8,	r15	;r2 As==11
+    81ac:	b0 12 be 80 	call	#0x80be	
+}
+    81b0:	34 41       	pop	r4		
+    81b2:	30 41       	ret			
+
+000081b4 <set_mcu_speed_dco_mclk_8MHz_smclk_2MHz>:
+
+void set_mcu_speed_dco_mclk_8MHz_smclk_2MHz()
+{
+    81b4:	04 12       	push	r4		
+    81b6:	04 41       	mov	r1,	r4	
+    81b8:	24 53       	incd	r4		
+	set_mcu_speed(8, 4);
+    81ba:	6e 42       	mov.b	#4,	r14	;r2 As==10
+    81bc:	7f 42       	mov.b	#8,	r15	;r2 As==11
+    81be:	b0 12 be 80 	call	#0x80be	
+}
+    81c2:	34 41       	pop	r4		
+    81c4:	30 41       	ret			
+
+000081c6 <set_mcu_speed_dco_mclk_8MHz_smclk_1MHz>:
+
+void set_mcu_speed_dco_mclk_8MHz_smclk_1MHz()
+{
+    81c6:	04 12       	push	r4		
+    81c8:	04 41       	mov	r1,	r4	
+    81ca:	24 53       	incd	r4		
+	set_mcu_speed(8, 8);
+    81cc:	7e 42       	mov.b	#8,	r14	;r2 As==11
+    81ce:	7f 42       	mov.b	#8,	r15	;r2 As==11
+    81d0:	b0 12 be 80 	call	#0x80be	
+}
+    81d4:	34 41       	pop	r4		
+    81d6:	30 41       	ret			
+
+000081d8 <set_mcu_speed_dco_mclk_12MHz_smclk_12MHz>:
+
+void set_mcu_speed_dco_mclk_12MHz_smclk_12MHz()
+{
+    81d8:	04 12       	push	r4		
+    81da:	04 41       	mov	r1,	r4	
+    81dc:	24 53       	incd	r4		
+	set_mcu_speed(12, 1);
+    81de:	5e 43       	mov.b	#1,	r14	;r3 As==01
+    81e0:	7f 40 0c 00 	mov.b	#12,	r15	;#0x000c
+    81e4:	b0 12 be 80 	call	#0x80be	
+}
+    81e8:	34 41       	pop	r4		
+    81ea:	30 41       	ret			
+
+000081ec <set_mcu_speed_dco_mclk_12MHz_smclk_6MHz>:
+
+void set_mcu_speed_dco_mclk_12MHz_smclk_6MHz()
+{
+    81ec:	04 12       	push	r4		
+    81ee:	04 41       	mov	r1,	r4	
+    81f0:	24 53       	incd	r4		
+	set_mcu_speed(12, 2);
+    81f2:	6e 43       	mov.b	#2,	r14	;r3 As==10
+    81f4:	7f 40 0c 00 	mov.b	#12,	r15	;#0x000c
+    81f8:	b0 12 be 80 	call	#0x80be	
+}
+    81fc:	34 41       	pop	r4		
+    81fe:	30 41       	ret			
+
+00008200 <set_mcu_speed_dco_mclk_12MHz_smclk_3MHz>:
+
+void set_mcu_speed_dco_mclk_12MHz_smclk_3MHz()
+{
+    8200:	04 12       	push	r4		
+    8202:	04 41       	mov	r1,	r4	
+    8204:	24 53       	incd	r4		
+	set_mcu_speed(12, 4);
+    8206:	6e 42       	mov.b	#4,	r14	;r2 As==10
+    8208:	7f 40 0c 00 	mov.b	#12,	r15	;#0x000c
+    820c:	b0 12 be 80 	call	#0x80be	
+}
+    8210:	34 41       	pop	r4		
+    8212:	30 41       	ret			
+
+00008214 <set_mcu_speed_dco_mclk_12MHz_smclk_1_5MHz>:
+
+void set_mcu_speed_dco_mclk_12MHz_smclk_1_5MHz()
+{
+    8214:	04 12       	push	r4		
+    8216:	04 41       	mov	r1,	r4	
+    8218:	24 53       	incd	r4		
+	set_mcu_speed(12, 8);
+    821a:	7e 42       	mov.b	#8,	r14	;r2 As==11
+    821c:	7f 40 0c 00 	mov.b	#12,	r15	;#0x000c
+    8220:	b0 12 be 80 	call	#0x80be	
+}
+    8224:	34 41       	pop	r4		
+    8226:	30 41       	ret			
+
+00008228 <set_mcu_speed_dco_mclk_16MHz_smclk_16MHz>:
+
+void set_mcu_speed_dco_mclk_16MHz_smclk_16MHz()
+{
+    8228:	04 12       	push	r4		
+    822a:	04 41       	mov	r1,	r4	
+    822c:	24 53       	incd	r4		
+	set_mcu_speed(16, 1);
+    822e:	5e 43       	mov.b	#1,	r14	;r3 As==01
+    8230:	7f 40 10 00 	mov.b	#16,	r15	;#0x0010
+    8234:	b0 12 be 80 	call	#0x80be	
+}
+    8238:	34 41       	pop	r4		
+    823a:	30 41       	ret			
+
+0000823c <set_mcu_speed_dco_mclk_16MHz_smclk_8MHz>:
+
+void set_mcu_speed_dco_mclk_16MHz_smclk_8MHz()
+{
+    823c:	04 12       	push	r4		
+    823e:	04 41       	mov	r1,	r4	
+    8240:	24 53       	incd	r4		
+	set_mcu_speed(16, 2);
+    8242:	6e 43       	mov.b	#2,	r14	;r3 As==10
+    8244:	7f 40 10 00 	mov.b	#16,	r15	;#0x0010
+    8248:	b0 12 be 80 	call	#0x80be	
+}
+    824c:	34 41       	pop	r4		
+    824e:	30 41       	ret			
+
+00008250 <set_mcu_speed_dco_mclk_16MHz_smclk_4MHz>:
+
+void set_mcu_speed_dco_mclk_16MHz_smclk_4MHz()
+{
+    8250:	04 12       	push	r4		
+    8252:	04 41       	mov	r1,	r4	
+    8254:	24 53       	incd	r4		
+	set_mcu_speed(16, 4);
+    8256:	6e 42       	mov.b	#4,	r14	;r2 As==10
+    8258:	7f 40 10 00 	mov.b	#16,	r15	;#0x0010
+    825c:	b0 12 be 80 	call	#0x80be	
+}
+    8260:	34 41       	pop	r4		
+    8262:	30 41       	ret			
+
+00008264 <set_mcu_speed_dco_mclk_16MHz_smclk_2MHz>:
+
+void set_mcu_speed_dco_mclk_16MHz_smclk_2MHz()
+{
+    8264:	04 12       	push	r4		
+    8266:	04 41       	mov	r1,	r4	
+    8268:	24 53       	incd	r4		
+	set_mcu_speed(16, 8);
+    826a:	7e 42       	mov.b	#8,	r14	;r2 As==11
+    826c:	7f 40 10 00 	mov.b	#16,	r15	;#0x0010
+    8270:	b0 12 be 80 	call	#0x80be	
+}
+    8274:	34 41       	pop	r4		
+    8276:	30 41       	ret			
+
+00008278 <loop_4_cycles>:
+/* the IAR version of loop_4_cycles is defined in loop_4_cycles.s43 */
+#if defined(__GNUC__) && defined(__MSP430__)
+/* uint32_t version */
+/* will block 4*n cycles + constant (function jump and init) */
+void loop_4_cycles(register uint32_t n)
+{
+    8278:	04 12       	push	r4		
+    827a:	04 41       	mov	r1,	r4	
+    827c:	24 53       	incd	r4		
+	/* C equivalent: do{ n--; } while(n > 0) */
+	__asm__ __volatile__("0: \n" "add.w #-1,%A[n] \n"	/* LSB, 1 cycles */
+    827e:	3e 53       	add	#-1,	r14	;r3 As==11
+    8280:	3f 63       	addc	#-1,	r15	;r3 As==11
+    8282:	fd 2f       	jc	$-4      	;abs 0x827e
+			     "addc.w #-1,%B[n] \n"	/* MSB, 1 cycles */
+			     "jc 0b \n"	/* 2 cycles      */
+			     :[n] "+r"((long)n));
+}
+    8284:	34 41       	pop	r4		
+    8286:	30 41       	ret			
+
+00008288 <delay_usec>:
+#endif
+
+void inline delay_usec(unsigned int usec)
+{
+    8288:	04 12       	push	r4		
+    828a:	04 41       	mov	r1,	r4	
+    828c:	24 53       	incd	r4		
+    828e:	31 50 fa ff 	add	#-6,	r1	;#0xfffa
+    8292:	84 4f fc ff 	mov	r15,	-4(r4)	;0xfffc(r4)
+	uint32_t loops;
+	switch (mclk_freq_mhz) {
+    8296:	1f 42 02 02 	mov	&0x0202,r15	
+    829a:	3f 92       	cmp	#8,	r15	;r2 As==11
+    829c:	18 24       	jz	$+50     	;abs 0x82ce
+    829e:	3f 90 09 00 	cmp	#9,	r15	;#0x0009
+    82a2:	03 2c       	jc	$+8      	;abs 0x82aa
+    82a4:	1f 93       	cmp	#1,	r15	;r3 As==01
+    82a6:	08 24       	jz	$+18     	;abs 0x82b8
+    82a8:	2d 3c       	jmp	$+92     	;abs 0x8304
+    82aa:	3f 90 0c 00 	cmp	#12,	r15	;#0x000c
+    82ae:	17 24       	jz	$+48     	;abs 0x82de
+    82b0:	3f 90 10 00 	cmp	#16,	r15	;#0x0010
+    82b4:	1e 24       	jz	$+62     	;abs 0x82f2
+    82b6:	26 3c       	jmp	$+78     	;abs 0x8304
+	case 1:		// 4 cycles == 4 us
+		loops = usec >> 2;
+    82b8:	1f 44 fc ff 	mov	-4(r4),	r15	;0xfffc(r4)
+    82bc:	12 c3       	clrc			
+    82be:	0f 10       	rrc	r15		
+    82c0:	12 c3       	clrc			
+    82c2:	0f 10       	rrc	r15		
+    82c4:	84 4f f8 ff 	mov	r15,	-8(r4)	;0xfff8(r4)
+    82c8:	84 43 fa ff 	mov	#0,	-6(r4)	;r3 As==00, 0xfffa(r4)
+		break;
+    82cc:	26 3c       	jmp	$+78     	;abs 0x831a
+	case 8:		// 4 cycles == 0.5 us
+		loops = usec << 1;
+    82ce:	1f 44 fc ff 	mov	-4(r4),	r15	;0xfffc(r4)
+    82d2:	0f 5f       	rla	r15		
+    82d4:	84 4f f8 ff 	mov	r15,	-8(r4)	;0xfff8(r4)
+    82d8:	84 43 fa ff 	mov	#0,	-6(r4)	;r3 As==00, 0xfffa(r4)
+		break;
+    82dc:	1e 3c       	jmp	$+62     	;abs 0x831a
+	case 12:		// 4 cycles == 0.33 us
+		loops = usec * 3;
+    82de:	1e 44 fc ff 	mov	-4(r4),	r14	;0xfffc(r4)
+    82e2:	0f 4e       	mov	r14,	r15	
+    82e4:	0f 5f       	rla	r15		
+    82e6:	0f 5e       	add	r14,	r15	
+    82e8:	84 4f f8 ff 	mov	r15,	-8(r4)	;0xfff8(r4)
+    82ec:	84 43 fa ff 	mov	#0,	-6(r4)	;r3 As==00, 0xfffa(r4)
+		break;
+    82f0:	14 3c       	jmp	$+42     	;abs 0x831a
+	case 16:		// 4 cycles == 0.25 us
+		loops = usec << 2;
+    82f2:	1f 44 fc ff 	mov	-4(r4),	r15	;0xfffc(r4)
+    82f6:	0f 5f       	rla	r15		
+    82f8:	0f 5f       	rla	r15		
+    82fa:	84 4f f8 ff 	mov	r15,	-8(r4)	;0xfff8(r4)
+    82fe:	84 43 fa ff 	mov	#0,	-6(r4)	;r3 As==00, 0xfffa(r4)
+		break;
+    8302:	0b 3c       	jmp	$+24     	;abs 0x831a
+	default:
+		loops = usec >> 2; /* arbitrary 1MHz */
+    8304:	1f 44 fc ff 	mov	-4(r4),	r15	;0xfffc(r4)
+    8308:	12 c3       	clrc			
+    830a:	0f 10       	rrc	r15		
+    830c:	12 c3       	clrc			
+    830e:	0f 10       	rrc	r15		
+    8310:	84 4f f8 ff 	mov	r15,	-8(r4)	;0xfff8(r4)
+    8314:	84 43 fa ff 	mov	#0,	-6(r4)	;r3 As==00, 0xfffa(r4)
+		break;
+    8318:	03 43       	nop			
+	}
+	loop_4_cycles(loops);
+    831a:	1e 44 f8 ff 	mov	-8(r4),	r14	;0xfff8(r4)
+    831e:	1f 44 fa ff 	mov	-6(r4),	r15	;0xfffa(r4)
+    8322:	b0 12 78 82 	call	#0x8278	
+}
+    8326:	31 50 06 00 	add	#6,	r1	;#0x0006
+    832a:	34 41       	pop	r4		
+    832c:	30 41       	ret			
+
+0000832e <delay_ms>:
+
+void delay_ms(unsigned int ms)
+{
+    832e:	04 12       	push	r4		
+    8330:	04 41       	mov	r1,	r4	
+    8332:	24 53       	incd	r4		
+    8334:	31 82       	sub	#8,	r1	;r2 As==11
+    8336:	84 4f fc ff 	mov	r15,	-4(r4)	;0xfffc(r4)
+	unsigned int i;
+	uint32_t loops;
+
+	switch (mclk_freq_mhz) {
+    833a:	1f 42 02 02 	mov	&0x0202,r15	
+    833e:	3f 92       	cmp	#8,	r15	;r2 As==11
+    8340:	13 24       	jz	$+40     	;abs 0x8368
+    8342:	3f 90 09 00 	cmp	#9,	r15	;#0x0009
+    8346:	03 2c       	jc	$+8      	;abs 0x834e
+    8348:	1f 93       	cmp	#1,	r15	;r3 As==01
+    834a:	08 24       	jz	$+18     	;abs 0x835c
+    834c:	1f 3c       	jmp	$+64     	;abs 0x838c
+    834e:	3f 90 0c 00 	cmp	#12,	r15	;#0x000c
+    8352:	10 24       	jz	$+34     	;abs 0x8374
+    8354:	3f 90 10 00 	cmp	#16,	r15	;#0x0010
+    8358:	13 24       	jz	$+40     	;abs 0x8380
+    835a:	18 3c       	jmp	$+50     	;abs 0x838c
+	case 1:
+		loops = 1000 >> 2;
+    835c:	b4 40 fa 00 	mov	#250,	-8(r4)	;#0x00fa, 0xfff8(r4)
+    8360:	f8 ff 
+    8362:	84 43 fa ff 	mov	#0,	-6(r4)	;r3 As==00, 0xfffa(r4)
+		break;
+    8366:	18 3c       	jmp	$+50     	;abs 0x8398
+	case 8:
+		loops = 1000 << 1;
+    8368:	b4 40 d0 07 	mov	#2000,	-8(r4)	;#0x07d0, 0xfff8(r4)
+    836c:	f8 ff 
+    836e:	84 43 fa ff 	mov	#0,	-6(r4)	;r3 As==00, 0xfffa(r4)
+		break;
+    8372:	12 3c       	jmp	$+38     	;abs 0x8398
+	case 12:
+		loops = 1000 * 3;
+    8374:	b4 40 b8 0b 	mov	#3000,	-8(r4)	;#0x0bb8, 0xfff8(r4)
+    8378:	f8 ff 
+    837a:	84 43 fa ff 	mov	#0,	-6(r4)	;r3 As==00, 0xfffa(r4)
+		break;
+    837e:	0c 3c       	jmp	$+26     	;abs 0x8398
+	case 16:
+		loops = 1000 << 2;
+    8380:	b4 40 a0 0f 	mov	#4000,	-8(r4)	;#0x0fa0, 0xfff8(r4)
+    8384:	f8 ff 
+    8386:	84 43 fa ff 	mov	#0,	-6(r4)	;r3 As==00, 0xfffa(r4)
+		break;
+    838a:	06 3c       	jmp	$+14     	;abs 0x8398
+	default: /* arbitrary value to 1MHZ */
+		loops = 1000 >> 2;
+    838c:	b4 40 fa 00 	mov	#250,	-8(r4)	;#0x00fa, 0xfff8(r4)
+    8390:	f8 ff 
+    8392:	84 43 fa ff 	mov	#0,	-6(r4)	;r3 As==00, 0xfffa(r4)
+		break;
+    8396:	03 43       	nop			
+	}
+
+	/* calling delay_usec() introduces an high
+	 * clock skew for low mclk frequencies
+	 */
+	for (i = 0; i < ms; i++) {
+    8398:	84 43 f6 ff 	mov	#0,	-10(r4)	;r3 As==00, 0xfff6(r4)
+    839c:	08 3c       	jmp	$+18     	;abs 0x83ae
+		loop_4_cycles(loops);
+    839e:	1e 44 f8 ff 	mov	-8(r4),	r14	;0xfff8(r4)
+    83a2:	1f 44 fa ff 	mov	-6(r4),	r15	;0xfffa(r4)
+    83a6:	b0 12 78 82 	call	#0x8278	
+	}
+
+	/* calling delay_usec() introduces an high
+	 * clock skew for low mclk frequencies
+	 */
+	for (i = 0; i < ms; i++) {
+    83aa:	94 53 f6 ff 	inc	-10(r4)	;0xfff6(r4)
+    83ae:	94 94 fc ff 	cmp	-4(r4),	-10(r4)	;0xfffc(r4), 0xfff6(r4)
+    83b2:	f6 ff 
+    83b4:	f4 2b       	jnc	$-22     	;abs 0x839e
+		loop_4_cycles(loops);
+	}
+}
+    83b6:	31 52       	add	#8,	r1	;r2 As==11
+    83b8:	34 41       	pop	r4		
+    83ba:	30 41       	ret			
+
+000083bc <led_green_off>:
+#define LED_PORT       P1OUT
+#define BIT_GREEN      BIT1
+#define BIT_RED        BIT0
+
+void led_green_off(void)
+{
+    83bc:	04 12       	push	r4		
+    83be:	04 41       	mov	r1,	r4	
+    83c0:	24 53       	incd	r4		
+	LED_PORT &= ~BIT_GREEN;
+    83c2:	5f 42 21 00 	mov.b	&0x0021,r15	
+    83c6:	7f f0 fd ff 	and.b	#-3,	r15	;#0xfffd
+    83ca:	c2 4f 21 00 	mov.b	r15,	&0x0021	
+}
+    83ce:	34 41       	pop	r4		
+    83d0:	30 41       	ret			
+
+000083d2 <led_green_on>:
+
+void led_green_on(void)
+{
+    83d2:	04 12       	push	r4		
+    83d4:	04 41       	mov	r1,	r4	
+    83d6:	24 53       	incd	r4		
+	LED_PORT |= BIT_GREEN;
+    83d8:	5f 42 21 00 	mov.b	&0x0021,r15	
+    83dc:	6f d3       	bis.b	#2,	r15	;r3 As==10
+    83de:	c2 4f 21 00 	mov.b	r15,	&0x0021	
+}
+    83e2:	34 41       	pop	r4		
+    83e4:	30 41       	ret			
+
+000083e6 <led_green_switch>:
+
+void led_green_switch(void)
+{
+    83e6:	04 12       	push	r4		
+    83e8:	04 41       	mov	r1,	r4	
+    83ea:	24 53       	incd	r4		
+	LED_PORT ^= BIT_GREEN;
+    83ec:	5f 42 21 00 	mov.b	&0x0021,r15	
+    83f0:	6f e3       	xor.b	#2,	r15	;r3 As==10
+    83f2:	c2 4f 21 00 	mov.b	r15,	&0x0021	
+}
+    83f6:	34 41       	pop	r4		
+    83f8:	30 41       	ret			
+
+000083fa <led_red_off>:
+
+void led_red_off(void)
+{
+    83fa:	04 12       	push	r4		
+    83fc:	04 41       	mov	r1,	r4	
+    83fe:	24 53       	incd	r4		
+	LED_PORT &= ~BIT_RED;
+    8400:	5f 42 21 00 	mov.b	&0x0021,r15	
+    8404:	7f f0 fe ff 	and.b	#-2,	r15	;#0xfffe
+    8408:	c2 4f 21 00 	mov.b	r15,	&0x0021	
+}
+    840c:	34 41       	pop	r4		
+    840e:	30 41       	ret			
+
+00008410 <led_red_on>:
+
+void led_red_on(void)
+{
+    8410:	04 12       	push	r4		
+    8412:	04 41       	mov	r1,	r4	
+    8414:	24 53       	incd	r4		
+	LED_PORT |= BIT_RED;
+    8416:	5f 42 21 00 	mov.b	&0x0021,r15	
+    841a:	5f d3       	bis.b	#1,	r15	;r3 As==01
+    841c:	c2 4f 21 00 	mov.b	r15,	&0x0021	
+}
+    8420:	34 41       	pop	r4		
+    8422:	30 41       	ret			
+
+00008424 <led_red_switch>:
+
+void led_red_switch(void)
+{
+    8424:	04 12       	push	r4		
+    8426:	04 41       	mov	r1,	r4	
+    8428:	24 53       	incd	r4		
+	LED_PORT ^= BIT_RED;
+    842a:	5f 42 21 00 	mov.b	&0x0021,r15	
+    842e:	5f e3       	xor.b	#1,	r15	;r3 As==01
+    8430:	c2 4f 21 00 	mov.b	r15,	&0x0021	
+}
+    8434:	34 41       	pop	r4		
+    8436:	30 41       	ret			
+
+00008438 <leds_off>:
+
+void leds_off(void)
+{
+    8438:	04 12       	push	r4		
+    843a:	04 41       	mov	r1,	r4	
+    843c:	24 53       	incd	r4		
+	LED_PORT &= ~(BIT_GREEN | BIT_RED);
+    843e:	5f 42 21 00 	mov.b	&0x0021,r15	
+    8442:	7f f0 fc ff 	and.b	#-4,	r15	;#0xfffc
+    8446:	c2 4f 21 00 	mov.b	r15,	&0x0021	
+}
+    844a:	34 41       	pop	r4		
+    844c:	30 41       	ret			
+
+0000844e <leds_on>:
+
+void leds_on(void)
+{
+    844e:	04 12       	push	r4		
+    8450:	04 41       	mov	r1,	r4	
+    8452:	24 53       	incd	r4		
+	LED_PORT |= (BIT_GREEN | BIT_RED);
+    8454:	5f 42 21 00 	mov.b	&0x0021,r15	
+    8458:	7f d0 03 00 	bis.b	#3,	r15	;#0x0003
+    845c:	c2 4f 21 00 	mov.b	r15,	&0x0021	
+}
+    8460:	34 41       	pop	r4		
+    8462:	30 41       	ret			
+
+00008464 <leds_init>:
+
+void leds_init(void)
+{
+    8464:	04 12       	push	r4		
+    8466:	04 41       	mov	r1,	r4	
+    8468:	24 53       	incd	r4		
+	P1OUT &= ~(BIT_GREEN | BIT_RED);
+    846a:	5f 42 21 00 	mov.b	&0x0021,r15	
+    846e:	7f f0 fc ff 	and.b	#-4,	r15	;#0xfffc
+    8472:	c2 4f 21 00 	mov.b	r15,	&0x0021	
+	P1DIR |= (BIT_GREEN | BIT_RED);
+    8476:	5f 42 22 00 	mov.b	&0x0022,r15	
+    847a:	7f d0 03 00 	bis.b	#3,	r15	;#0x0003
+    847e:	c2 4f 22 00 	mov.b	r15,	&0x0022	
+	P1SEL &= ~(BIT_GREEN | BIT_RED);
+    8482:	5f 42 26 00 	mov.b	&0x0026,r15	
+    8486:	7f f0 fc ff 	and.b	#-4,	r15	;#0xfffc
+    848a:	c2 4f 26 00 	mov.b	r15,	&0x0026	
+	leds_off();
+    848e:	b0 12 38 84 	call	#0x8438	
+}
+    8492:	34 41       	pop	r4		
+    8494:	30 41       	ret			
+
+00008496 <Timer_A>:
+
+static volatile timer_cb timerA_cb;
+static volatile int timerA_wakeup;
+
+ISR(TIMERA0, Timer_A)
+{
+    8496:	0f 12       	push	r15		
+    8498:	0e 12       	push	r14		
+    849a:	0d 12       	push	r13		
+    849c:	0c 12       	push	r12		
+    849e:	04 12       	push	r4		
+    84a0:	04 41       	mov	r1,	r4	
+    84a2:	34 50 0a 00 	add	#10,	r4	;#0x000a
+	if (timerA_cb != NULL)
+    84a6:	1f 42 04 02 	mov	&0x0204,r15	
+    84aa:	0f 93       	tst	r15		
+    84ac:	03 24       	jz	$+8      	;abs 0x84b4
+		timerA_cb();
+    84ae:	1f 42 04 02 	mov	&0x0204,r15	
+    84b2:	8f 12       	call	r15		
+
+	if (timerA_wakeup == 1)
+    84b4:	1f 42 06 02 	mov	&0x0206,r15	
+    84b8:	1f 93       	cmp	#1,	r15	;r3 As==01
+    84ba:	03 20       	jnz	$+8      	;abs 0x84c2
+		LPM_OFF_ON_EXIT;
+    84bc:	b4 c0 f0 00 	bic	#240,	0(r4)	;#0x00f0, 0x0000(r4)
+    84c0:	00 00 
+}
+    84c2:	34 41       	pop	r4		
+    84c4:	3c 41       	pop	r12		
+    84c6:	3d 41       	pop	r13		
+    84c8:	3e 41       	pop	r14		
+    84ca:	3f 41       	pop	r15		
+    84cc:	00 13       	reti			
+
+000084ce <timerA_init>:
+
+void timerA_init(void)
+{
+    84ce:	04 12       	push	r4		
+    84d0:	04 41       	mov	r1,	r4	
+    84d2:	24 53       	incd	r4		
+	timerA_cb = NULL;
+    84d4:	82 43 04 02 	mov	#0,	&0x0204	;r3 As==00
+	timerA_wakeup = 0;
+    84d8:	82 43 06 02 	mov	#0,	&0x0206	;r3 As==00
+	timerA_stop();
+    84dc:	b0 12 6c 85 	call	#0x856c	
+}
+    84e0:	34 41       	pop	r4		
+    84e2:	30 41       	ret			
+
+000084e4 <timerA_register_cb>:
+
+void timerA_register_cb(timer_cb cb)
+{
+    84e4:	04 12       	push	r4		
+    84e6:	04 41       	mov	r1,	r4	
+    84e8:	24 53       	incd	r4		
+    84ea:	21 83       	decd	r1		
+    84ec:	84 4f fc ff 	mov	r15,	-4(r4)	;0xfffc(r4)
+	timerA_cb = cb;
+    84f0:	92 44 fc ff 	mov	-4(r4),	&0x0204	;0xfffc(r4)
+    84f4:	04 02 
+}
+    84f6:	21 53       	incd	r1		
+    84f8:	34 41       	pop	r4		
+    84fa:	30 41       	ret			
+
+000084fc <timerA_set_wakeup>:
+
+void timerA_set_wakeup(int w)
+{
+    84fc:	04 12       	push	r4		
+    84fe:	04 41       	mov	r1,	r4	
+    8500:	24 53       	incd	r4		
+    8502:	21 83       	decd	r1		
+    8504:	84 4f fc ff 	mov	r15,	-4(r4)	;0xfffc(r4)
+	timerA_wakeup = w;
+    8508:	92 44 fc ff 	mov	-4(r4),	&0x0206	;0xfffc(r4)
+    850c:	06 02 
+}
+    850e:	21 53       	incd	r1		
+    8510:	34 41       	pop	r4		
+    8512:	30 41       	ret			
+
+00008514 <timerA_start_ticks>:
+
+void timerA_start_ticks(unsigned ticks)
+{
+    8514:	04 12       	push	r4		
+    8516:	04 41       	mov	r1,	r4	
+    8518:	24 53       	incd	r4		
+    851a:	21 83       	decd	r1		
+    851c:	84 4f fc ff 	mov	r15,	-4(r4)	;0xfffc(r4)
+	BCSCTL3 |= LFXT1S_2;	// LFXT1 = VLO
+    8520:	5f 42 53 00 	mov.b	&0x0053,r15	
+    8524:	7f d0 20 00 	bis.b	#32,	r15	;#0x0020
+    8528:	c2 4f 53 00 	mov.b	r15,	&0x0053	
+	TACCTL0 = CCIE;		// TCCR0 interrupt enabled
+    852c:	b2 40 10 00 	mov	#16,	&0x0162	;#0x0010
+    8530:	62 01 
+	TAR = 0;
+    8532:	82 43 70 01 	mov	#0,	&0x0170	;r3 As==00
+	TACCR0 = ticks;
+    8536:	92 44 fc ff 	mov	-4(r4),	&0x0172	;0xfffc(r4)
+    853a:	72 01 
+	TACTL = TASSEL_1 + MC_1;	// ACLK, upmode
+    853c:	b2 40 10 01 	mov	#272,	&0x0160	;#0x0110
+    8540:	60 01 
+}
+    8542:	21 53       	incd	r1		
+    8544:	34 41       	pop	r4		
+    8546:	30 41       	ret			
+
+00008548 <timerA_start_milliseconds>:
+
+#define VLO_FREQ 12000
+#define TICKS_IN_MS (VLO_FREQ/1000)
+
+void timerA_start_milliseconds(unsigned ms)
+{
+    8548:	04 12       	push	r4		
+    854a:	04 41       	mov	r1,	r4	
+    854c:	24 53       	incd	r4		
+    854e:	21 83       	decd	r1		
+    8550:	84 4f fc ff 	mov	r15,	-4(r4)	;0xfffc(r4)
+	timerA_start_ticks(ms * TICKS_IN_MS);
+    8554:	1e 44 fc ff 	mov	-4(r4),	r14	;0xfffc(r4)
+    8558:	0f 4e       	mov	r14,	r15	
+    855a:	0f 5f       	rla	r15		
+    855c:	0f 5e       	add	r14,	r15	
+    855e:	0f 5f       	rla	r15		
+    8560:	0f 5f       	rla	r15		
+    8562:	b0 12 14 85 	call	#0x8514	
+}
+    8566:	21 53       	incd	r1		
+    8568:	34 41       	pop	r4		
+    856a:	30 41       	ret			
+
+0000856c <timerA_stop>:
+
+void timerA_stop(void)
+{
+    856c:	04 12       	push	r4		
+    856e:	04 41       	mov	r1,	r4	
+    8570:	24 53       	incd	r4		
+	TACTL = 0;
+    8572:	82 43 60 01 	mov	#0,	&0x0160	;r3 As==00
+}
+    8576:	34 41       	pop	r4		
+    8578:	30 41       	ret			
+
+0000857a <Timer_B>:
+
+static volatile timer_cb timerB_cb;
+static volatile int timerB_wakeup;
+
+ISR(TIMERB0, Timer_B)
+{
+    857a:	0f 12       	push	r15		
+    857c:	0e 12       	push	r14		
+    857e:	0d 12       	push	r13		
+    8580:	0c 12       	push	r12		
+    8582:	04 12       	push	r4		
+    8584:	04 41       	mov	r1,	r4	
+    8586:	34 50 0a 00 	add	#10,	r4	;#0x000a
+	if (timerB_cb != NULL)
+    858a:	1f 42 08 02 	mov	&0x0208,r15	
+    858e:	0f 93       	tst	r15		
+    8590:	03 24       	jz	$+8      	;abs 0x8598
+		timerB_cb();
+    8592:	1f 42 08 02 	mov	&0x0208,r15	
+    8596:	8f 12       	call	r15		
+
+	if (timerB_wakeup == 1)
+    8598:	1f 42 0a 02 	mov	&0x020a,r15	
+    859c:	1f 93       	cmp	#1,	r15	;r3 As==01
+    859e:	03 20       	jnz	$+8      	;abs 0x85a6
+		LPM_OFF_ON_EXIT;
+    85a0:	b4 c0 f0 00 	bic	#240,	0(r4)	;#0x00f0, 0x0000(r4)
+    85a4:	00 00 
+}
+    85a6:	34 41       	pop	r4		
+    85a8:	3c 41       	pop	r12		
+    85aa:	3d 41       	pop	r13		
+    85ac:	3e 41       	pop	r14		
+    85ae:	3f 41       	pop	r15		
+    85b0:	00 13       	reti			
+
+000085b2 <timerB_init>:
+
+void timerB_init(void)
+{
+    85b2:	04 12       	push	r4		
+    85b4:	04 41       	mov	r1,	r4	
+    85b6:	24 53       	incd	r4		
+	timerB_cb = NULL;
+    85b8:	82 43 08 02 	mov	#0,	&0x0208	;r3 As==00
+	timerB_wakeup = 0;
+    85bc:	82 43 0a 02 	mov	#0,	&0x020a	;r3 As==00
+	timerB_stop();
+    85c0:	b0 12 50 86 	call	#0x8650	
+}
+    85c4:	34 41       	pop	r4		
+    85c6:	30 41       	ret			
+
+000085c8 <timerB_register_cb>:
+
+void timerB_register_cb(timer_cb cb)
+{
+    85c8:	04 12       	push	r4		
+    85ca:	04 41       	mov	r1,	r4	
+    85cc:	24 53       	incd	r4		
+    85ce:	21 83       	decd	r1		
+    85d0:	84 4f fc ff 	mov	r15,	-4(r4)	;0xfffc(r4)
+	timerB_cb = cb;
+    85d4:	92 44 fc ff 	mov	-4(r4),	&0x0208	;0xfffc(r4)
+    85d8:	08 02 
+}
+    85da:	21 53       	incd	r1		
+    85dc:	34 41       	pop	r4		
+    85de:	30 41       	ret			
+
+000085e0 <timerB_set_wakeup>:
+
+void timerB_set_wakeup(int w)
+{
+    85e0:	04 12       	push	r4		
+    85e2:	04 41       	mov	r1,	r4	
+    85e4:	24 53       	incd	r4		
+    85e6:	21 83       	decd	r1		
+    85e8:	84 4f fc ff 	mov	r15,	-4(r4)	;0xfffc(r4)
+	timerB_wakeup = w;
+    85ec:	92 44 fc ff 	mov	-4(r4),	&0x020a	;0xfffc(r4)
+    85f0:	0a 02 
+}
+    85f2:	21 53       	incd	r1		
+    85f4:	34 41       	pop	r4		
+    85f6:	30 41       	ret			
+
+000085f8 <timerB_start_ticks>:
+
+void timerB_start_ticks(unsigned ticks)
+{
+    85f8:	04 12       	push	r4		
+    85fa:	04 41       	mov	r1,	r4	
+    85fc:	24 53       	incd	r4		
+    85fe:	21 83       	decd	r1		
+    8600:	84 4f fc ff 	mov	r15,	-4(r4)	;0xfffc(r4)
+	BCSCTL3 |= LFXT1S_2;	// LFXT1 = VLO
+    8604:	5f 42 53 00 	mov.b	&0x0053,r15	
+    8608:	7f d0 20 00 	bis.b	#32,	r15	;#0x0020
+    860c:	c2 4f 53 00 	mov.b	r15,	&0x0053	
+	TBCCTL0 = CCIE;		// TCCR0 interrupt enabled
+    8610:	b2 40 10 00 	mov	#16,	&0x0182	;#0x0010
+    8614:	82 01 
+	TBR = 0;
+    8616:	82 43 90 01 	mov	#0,	&0x0190	;r3 As==00
+	TBCCR0 = ticks;
+    861a:	92 44 fc ff 	mov	-4(r4),	&0x0192	;0xfffc(r4)
+    861e:	92 01 
+	TBCTL = TBSSEL_1 + MC_1;	// ACLK, upmode
+    8620:	b2 40 10 01 	mov	#272,	&0x0180	;#0x0110
+    8624:	80 01 
+}
+    8626:	21 53       	incd	r1		
+    8628:	34 41       	pop	r4		
+    862a:	30 41       	ret			
+
+0000862c <timerB_start_milliseconds>:
+
+void timerB_start_milliseconds(unsigned ms)
+{
+    862c:	04 12       	push	r4		
+    862e:	04 41       	mov	r1,	r4	
+    8630:	24 53       	incd	r4		
+    8632:	21 83       	decd	r1		
+    8634:	84 4f fc ff 	mov	r15,	-4(r4)	;0xfffc(r4)
+	timerB_start_ticks(ms * TICKS_IN_MS);
+    8638:	1e 44 fc ff 	mov	-4(r4),	r14	;0xfffc(r4)
+    863c:	0f 4e       	mov	r14,	r15	
+    863e:	0f 5f       	rla	r15		
+    8640:	0f 5e       	add	r14,	r15	
+    8642:	0f 5f       	rla	r15		
+    8644:	0f 5f       	rla	r15		
+    8646:	b0 12 f8 85 	call	#0x85f8	
+}
+    864a:	21 53       	incd	r1		
+    864c:	34 41       	pop	r4		
+    864e:	30 41       	ret			
+
+00008650 <timerB_stop>:
+
+void timerB_stop(void)
+{
+    8650:	04 12       	push	r4		
+    8652:	04 41       	mov	r1,	r4	
+    8654:	24 53       	incd	r4		
+	TBCTL = 0;
+    8656:	82 43 80 01 	mov	#0,	&0x0180	;r3 As==00
+}
+    865a:	34 41       	pop	r4		
+    865c:	30 41       	ret			
+
+0000865e <watchdog_stop>:
+#endif
+
+static int watchdog_backup;
+
+void watchdog_stop()
+{
+    865e:	04 12       	push	r4		
+    8660:	04 41       	mov	r1,	r4	
+    8662:	24 53       	incd	r4		
+	/* the upper 8 bits are a password */
+	watchdog_backup = WDTCTL & 0x00FF;
+    8664:	1f 42 20 01 	mov	&0x0120,r15	
+    8668:	3f f0 ff 00 	and	#255,	r15	;#0x00ff
+    866c:	82 4f 0c 02 	mov	r15,	&0x020c	
+	WDTCTL = WDTPW | WDTHOLD;
+    8670:	b2 40 80 5a 	mov	#23168,	&0x0120	;#0x5a80
+    8674:	20 01 
+}
+    8676:	34 41       	pop	r4		
+    8678:	30 41       	ret			
+
+0000867a <watchdog_restore>:
+
+void watchdog_restore()
+{
+    867a:	04 12       	push	r4		
+    867c:	04 41       	mov	r1,	r4	
+    867e:	24 53       	incd	r4		
+	WDTCTL = WDTPW | watchdog_backup;
+    8680:	1f 42 0c 02 	mov	&0x020c,r15	
+    8684:	3f d0 00 5a 	bis	#23040,	r15	;#0x5a00
+    8688:	82 4f 20 01 	mov	r15,	&0x0120	
+}
+    868c:	34 41       	pop	r4		
+    868e:	30 41       	ret			
+
+00008690 <_unexpected_>:
+    8690:	00 13       	reti			
+
+Disassembly of section .vectors:
+
+0000ffe0 <__ivtbl_16>:
+    ffe0:	7e 80 7e 80 7e 80 7e 80 7e 80 7e 80 7e 80 7e 80     ~.~.~.~.~.~.~.~.
+    fff0:	7e 80 96 84 7e 80 7e 80 7e 80 7a 85 7e 80 00 80     ~...~.~.~.z.~...
