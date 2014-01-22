@@ -20,6 +20,9 @@
 
 	<h1>Radar</h1>
 	<div id="radar" style="float: left"></div>
+
+        <h1>Helpdesk</h1>
+        <p id="help"></p>
 </body>
 
 <script>
@@ -28,11 +31,7 @@
 		millisPerPixel: 100
 	});
 	smoothie.streamTo(document.getElementById("temperature"));
-	var temperature_line = new TimeSeries();
-	smoothie.addTimeSeries(temperature_line, {
-		lineWidth: 5,
-		strokeStyle: "#00ff00"
-	});
+        var lines = {};
 	
 	// Radar graph
 	// Note: this is an ugly use of a radar char.
@@ -45,13 +44,13 @@
 		nodeIds.forEach(function (nodeId) {
 			var elem = [];
 			for (var i = 0 ; i < nodeIds.length ; i++) {
-				if (nodeIds[i] === nodeId)
+                            if (nodeIds[i] === nodeId) {
 					// RadarChart doesn't like negative values
 					// -90dBm = low power = far away
 					// -20dBm = high power = close
 					// So in our case we can just take the opposite of the value and we'll be fine
-					elem.push({axis: nodeIds[i], value: -nodes[nodeId]})
-				else
+					elem.push({axis: nodeIds[i], value: -nodes[nodeId]});
+                                    } else
 					elem.push({axis: nodeIds[i], value: 0})
 			}
 			data.push(elem);
@@ -60,14 +59,35 @@
 		RadarChart.draw("#radar", data);
 	};
 
-	var socket = io.connect('http://localhost');
-	socket.on('temperature', function (temperature) {
-		temperature_line.append(new Date().getTime(), temperature);
-	});
-	socket.on('rssi', function (data) {
-		nodes[data.nodeId] = data.rssi;
-		draw_radar();
-	});
+	var socket = io.connect('http://' + document.location.host);
+
+        var timeout;
+        socket.on('message', function (msg) {
+            console.log(msg.toString());
+            if (msg.length !== 8) return;
+
+            if (!lines[parseInt(msg[1])]) {
+                lines[parseInt(msg[1])] = new TimeSeries();
+	        smoothie.addTimeSeries(lines[parseInt(msg[1])], {
+                    lineWidth: 5,
+                    strokeStyle: 'rgb(' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ')'
+                });
+            }
+
+	    lines[parseInt(msg[1])].append(new Date().getTime(), parseFloat(msg[3]));
+
+	    nodes[parseInt(msg[1])] = parseInt(msg[5]);
+	    draw_radar();
+
+            if (msg[7] === "1") {
+                if (timeout) clearTimeout(timeout);
+                document.getElementById('help').innerHTML = msg[1] + ' called for help';
+                timeout = setTimeout(function () {
+                    document.getElementById('help').innerHTML = '';
+                    timeout = null;
+                }, 3000);
+            }
+        });
 </script>
 
 </html>

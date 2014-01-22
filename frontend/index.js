@@ -14,16 +14,8 @@ app.get('/smoothie.js', function (req, res) {
 // Data input
 var csvStream = csv();
 csvStream.transform(function (row) {
-	if (row[0] === 'temperature') {
-		io.sockets.emit('temperature', parseFloat(row[1]));
-	}
-	else if (row[0] === 'rssi') {
-		io.sockets.emit('rssi', {
-			nodeId: parseInt(row[1]),
-			rssi: parseFloat(row[2])
-		});
-	}
-	return null;
+    io.sockets.emit('message', row);
+    return null;
 });
 
 var inputStream;

@@ -10,10 +10,10 @@ function getRandomInt (min, max) {
 
 var inputStream = new stream.PassThrough();
 inputStream.generateData = function () {
-	// Format: temperature, tempInDegrees
-	this.write('temperature,' + getRandomArbitary(10, 30) + '\n');
-	// Format: rssi, nodeId, dbi
-	this.write('rssi,' + getRandomInt(0, 5) + ',' + getRandomArbitary(-100, -30) + '\n');
+    var randomTemp = getRandomArbitary(10, 30);
+    var randomNodeID = getRandomInt(0, 5);
+    var randomRSSI = getRandomInt(-100, 0);
+    this.write('node_id,' + randomNodeID + ',temperature,' + randomTemp + ',rssi,' + randomRSSI + '\n');
 }
 
 module.exports = inputStream;
