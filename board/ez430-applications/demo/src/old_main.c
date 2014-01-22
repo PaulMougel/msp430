@@ -1,10 +1,3 @@
-/**
- *  \file   main.c
- *  \brief  eZ430-RF2500 tutorial, adc10
- *  \author Antoine Fraboulet, Tanguy Risset, Dominique Tournier
- *  \date   2009
- **/
-
 #include <msp430f2274.h>
 
 #if defined(__GNUC__) && defined(__MSP430__)
@@ -36,10 +29,36 @@
 
 #define DBG_PRINTF printf
 
-
-/* 100 Hz timer A */
+// Timer handling
+// --------------
+// Each TIMER_PERIOD_MS all timers are incremented
+// Used by protothreads to launch tasks
+#define NUM_TIMERS 4
+static uint16_t timer[NUM_TIMERS];
 #define TIMER_PERIOD_MS 10
+#define TIMER_GET_TEMPERATURE timer[0]
+#define TIMER_PRINT_TEMPERATURE timer[1]
+#define TIMER_SEND_TEMPERATURE timer[2]
+#define TIMER_RESET_CC2500 timer[3]
 
+void timerA_cb() {
+    int i;
+    for(i = 0; i < NUM_TIMERS; i++) {
+        if(timer[i] != UINT_MAX) timer[i]++;
+    }
+}
+
+int timer_reached(uint16_t timer, uint16_t count) {
+    return (timer >= count);
+}
+
+// Protothreads
+// ------------
+#define NUM_PT 5
+static struct pt pt[NUM_PT];
+
+// Radio
+// ----- 
 #define PKTLEN 7
 #define MAX_HOPS 3
 #define MSG_BYTE_TYPE 0U
@@ -49,495 +68,183 @@
 #define MSG_TYPE_ID_REQUEST 0x00
 #define MSG_TYPE_ID_REPLY 0x01
 #define MSG_TYPE_TEMPERATURE 0x02
+static uint8_t radio_tx_buffer[PKTLEN];
+static unsigned char node_id = 0x00;
+static uint8_t radio_rx_buffer[PKTLEN];
+static int radio_rx_flag = 0;
 
-#define NODE_ID_LOCATION INFOD_START
-
-#define NODE_ID_UNDEFINED 0x00
-/* 10 seconds to reply to an id request */
-#define ID_INPUT_TIMEOUT_SECONDS 10
-/* the same in timer ticks */
-#define ID_INPUT_TIMEOUT_TICKS (ID_INPUT_TIMEOUT_SECONDS*1000/TIMER_PERIOD_MS)
-static unsigned char node_id;
-
-#define NUM_TIMERS 6
-static uint16_t timer[NUM_TIMERS];
-#define TIMER_LED_RED_ON timer[0]
-#define TIMER_LED_GREEN_ON timer[1]
-#define TIMER_ANTIBOUNCING timer[2]
-#define TIMER_RADIO_SEND timer[3]
-#define TIMER_ID_INPUT timer[4]
-#define TIMER_RADIO_FORWARD timer[5]
-
-static void printhex(char *buffer, unsigned int len)
-{
+static void init_message() {
     unsigned int i;
-    for(i = 0; i < len; i++)
-    {
-        printf("%02X ", buffer[i]);
-    }
+    for (i = 0; i < PKTLEN; i++)
+        radio_tx_buffer[i] = 0x00;
+    radio_tx_buffer[MSG_BYTE_HOPS] = 0x01;
+    radio_tx_buffer[MSG_BYTE_SRC_ROUTE] = node_id;
 }
 
-static void dump_message(char *buffer)
-{
-    printf("message received\r\n  content: ");
-    printhex(buffer, PKTLEN);
-    printf("\r\n  type: ");
-    switch(buffer[MSG_BYTE_TYPE])
-    {
-        case MSG_TYPE_ID_REQUEST:
-            printf("id request");
-            break;
-        case MSG_TYPE_ID_REPLY:
-            printf("id reply");
-            break;
-        case MSG_TYPE_TEMPERATURE:
-            printf("temperature");
-            break;
-    }
-    printf("\r\n  num hops: %d\r\n", buffer[MSG_BYTE_HOPS]);
-    printf("  route: ");
-    unsigned int i;
-    for(i = MSG_BYTE_SRC_ROUTE; i < MSG_BYTE_SRC_ROUTE + buffer[MSG_BYTE_HOPS]; i++)
-    {
-        if(buffer[i] == 0x00)
-        {
-            printf("undefined");
-        }
-        else
-        {
-            printf("%02X", buffer[i]);
-        }
-        if(i < MSG_BYTE_SRC_ROUTE + buffer[MSG_BYTE_HOPS])
-        {
-            printf("->");
-        }
-    }
-    printf("%02X\r\n", node_id);
-
-    if(buffer[MSG_BYTE_TYPE] == MSG_TYPE_TEMPERATURE)
-    {
-        unsigned int temperature;
-        char *pt = (char *) &temperature;
-        pt[0] = buffer[MSG_BYTE_CONTENT + 1];
-        pt[1] = buffer[MSG_BYTE_CONTENT];
-        printf("  temperature: %d\r\n", temperature);
-    }
-
+static void radio_send_message() {
+    led_red_on();
+    cc2500_utx(radio_tx_buffer, PKTLEN);
+    led_red_off();
+    cc2500_rx_enter();
 }
 
-/* Protothread contexts */
-
-#define NUM_PT 2
-static struct pt pt[NUM_PT];
-
-
-/*
- * Timer
- */
-
-void timer_tick_cb() {
-    int i;
-    for(i = 0; i < NUM_TIMERS; i++)
-    {
-        if(timer[i] != UINT_MAX) {
-            timer[i]++;
-        }
-    }
-}
-
-int timer_reached(uint16_t timer, uint16_t count) {
-    return (timer >= count);
-}
-
-
-/*
- * LEDs
- */
-
-static int led_green_duration;
-static int led_green_flag;
-
-/* asynchronous */
-static void led_green_blink(int duration)
-{
-    led_green_duration = duration;
-    led_green_flag = 1;
-}
-
-static PT_THREAD(thread_led_green(struct pt *pt))
-{
-    PT_BEGIN(pt);
-
-    while(1)
-    {
-        PT_WAIT_UNTIL(pt, led_green_flag);
-        led_green_on();
-        TIMER_LED_GREEN_ON = 0;
-        PT_WAIT_UNTIL(pt, timer_reached(TIMER_LED_GREEN_ON,
-          led_green_duration));
-        led_green_off();
-        led_green_flag = 0;
-    }
-
-    PT_END(pt);
-}
-
-/*
- * Radio
- */
-
-static char radio_tx_buffer[PKTLEN];
-static char radio_rx_buffer[PKTLEN];
-static int radio_rx_flag;
-static int last_rssi;
-
-void radio_cb(uint8_t *buffer, int size, int8_t rssi)
-{
-  led_green_switch();
-
+void radio_rx_cb(uint8_t *buffer, int size, int8_t rssi) {
+    led_green_on();
     printf("msg received\r\n");
     switch (size)
     {
         case 0:
-            //DBG_PRINTF("msg size 0\r\n");
+            DBG_PRINTF("msg size 0\r\n");
             break;
         case -EEMPTY:
-            //DBG_PRINTF("msg emptyr\r\n");
+            DBG_PRINTF("msg emptyr\r\n");
             break;
         case -ERXFLOW:
-            //DBG_PRINTF("msg rx overflow\r\n");
+            DBG_PRINTF("msg rx overflow\r\n");
             break;
         case -ERXBADCRC:
-            //DBG_PRINTF("msg rx bad CRC\r\n");
+            DBG_PRINTF("msg rx bad CRC\r\n");
             break;
         case -ETXFLOW:
-            //DBG_PRINTF("msg tx overflow\r\n");
+            DBG_PRINTF("msg tx overflow\r\n");
             break;
         default:
             if (size > 0)
             {
                 /* register next available buffer in pool */
                 /* post event to application */
-                //DBG_PRINTF("rssi %d\r\n", rssi);
+                DBG_PRINTF("rssi %d\r\n", rssi);
 
                 memcpy(radio_rx_buffer, buffer, PKTLEN);
                 //FIXME what if radio_rx_flag == 1 already?
-                last_rssi = rssi;
+                //last_rssi = rssi;
                 radio_rx_flag = 1;
             }
             else
             {
                 /* packet error, drop */
-                //DBG_PRINTF("msg packet error size=%d\r\n",size);
+                DBG_PRINTF("msg packet error size=%d\r\n",size);
             }
             break;
     }
 
     cc2500_rx_enter();
+    led_green_off();
 }
 
-
-static void radio_send_message()
-{
-  led_red_switch();
-  cc2500_utx(radio_tx_buffer, PKTLEN);
-    printf("sent: ");
-    printhex(radio_tx_buffer, PKTLEN);
-    putchar('\r');
-    putchar('\n');
-    cc2500_rx_enter();
-}
-
-static PT_THREAD(thread_process_msg(struct pt *pt))
-{
+// App. logic
+// ----------
+static int last_temperature = 0;
+static PT_THREAD(thread_get_last_temperature(struct pt *pt)) {
+    // sets global variable last_temperature
     PT_BEGIN(pt);
 
-    while(1)
-    {
+    while (1) {
+        TIMER_GET_TEMPERATURE = 0;
+        PT_WAIT_UNTIL(pt, timer_reached(TIMER_GET_TEMPERATURE, 100)); // 1s
+        last_temperature = adc10_sample_temp();
+    }
+    PT_END(pt);
+}
+
+static PT_THREAD(thread_print_temperature(struct pt *pt)) {
+    PT_BEGIN(pt);
+
+    while (1) {
+        TIMER_PRINT_TEMPERATURE = 0;
+        PT_WAIT_UNTIL(pt, timer_reached(TIMER_PRINT_TEMPERATURE, 100)); // 1s
+
+        printf("temp,%d\r\n", last_temperature);
+    }
+    PT_END(pt);
+}
+
+static PT_THREAD(thread_send_temperature(struct pt *pt)) {
+    PT_BEGIN(pt);
+
+    while (1) {
+        TIMER_SEND_TEMPERATURE = 0;
+
+        PT_WAIT_UNTIL(pt, timer_reached(TIMER_SEND_TEMPERATURE, 100)); // 100 ticks = 1second
+
+        init_message();
+        radio_tx_buffer[MSG_BYTE_TYPE] = MSG_TYPE_TEMPERATURE;
+        // Convert to network order as msp430 is little endian
+        int temperature = last_temperature;
+        char *pt = (char *) &temperature;
+        radio_tx_buffer[MSG_BYTE_CONTENT] = pt[1];
+        radio_tx_buffer[MSG_BYTE_CONTENT + 1] = pt[0];
+        radio_send_message();
+    }
+    PT_END(pt);
+}
+
+static PT_THREAD(thread_process_message(struct pt *pt)) {
+    PT_BEGIN(pt);
+
+    while (1) {
         PT_WAIT_UNTIL(pt, radio_rx_flag == 1);
-
-        //dump_message(radio_rx_buffer);
-        printf("rssi: %d\r\n", last_rssi);
-        /* forward packet as it hasn't been processed on this node */
-        /*else if(radio_rx_buffer[MSG_BYTE_HOPS] < MAX_HOPS)
-        {
-            /* prevent loops by not forwarding a packet
-             * if we are among the last hops 
-            int loop = 0;
-            unsigned int i;
-            for(i = MSG_BYTE_SRC_ROUTE; i < MSG_BYTE_SRC_ROUTE + radio_tx_buffer[MSG_BYTE_HOPS]; i++)
-            {
-                if(radio_tx_buffer[i] == node_id) {
-                    loop = 1;
-                }
-            }
-
-            if(loop == 0)
-            {
-                memcpy(radio_tx_buffer, radio_rx_buffer, PKTLEN);
-                radio_tx_buffer[MSG_BYTE_SRC_ROUTE + radio_tx_buffer[MSG_BYTE_HOPS]] = node_id;
-                radio_tx_buffer[MSG_BYTE_HOPS]++;
-
-                /* this is probably the ugliest MAC protocol ever made
-                 * (a packet send takes about 30 ms to complete, therefore
-                 * we wait 40 ms * node_id before forwarding a packet
-                 * to avoid collisions) 
-                TIMER_RADIO_FORWARD = 0;
-                PT_WAIT_UNTIL(pt, timer_reached(TIMER_RADIO_FORWARD, 4 * node_id));
-
-                radio_send_message();
-            }
-        }*/
         radio_rx_flag = 0;
+        printf("RECEIVED MESSAGE\r\n");
     }
-
     PT_END(pt);
 }
 
-
-/*
- * UART
- */
-
-static int uart_flag;
-static uint8_t uart_data;
-
-int uart_cb(uint8_t data)
-{
-    uart_flag = 1;
-    uart_data = data;
-    return 0;
-}
-
-/* to be called from within a protothread */
-static void init_message()
-{
-    unsigned int i;
-    for(i = 0; i < PKTLEN; i++)
-    {
-        radio_tx_buffer[i] = 0x00;
-    }
-    radio_tx_buffer[MSG_BYTE_HOPS] = 0x01;
-    radio_tx_buffer[MSG_BYTE_SRC_ROUTE] = node_id;
-}
-
-static int acc_temp;
-static int cpt_temp;
-
-/* to be called from within a protothread */
-static void send_temperature()
-{
-    init_message();
-    radio_tx_buffer[MSG_BYTE_TYPE] = MSG_TYPE_TEMPERATURE;
-
-    __enable_interrupt();
-    int temp = adc10_sample_temp();
-    /* msp430 is little endian, convert temperature to network order */
-    char *pt = (char *) &temp;
-    radio_tx_buffer[MSG_BYTE_CONTENT] = pt[1];
-    radio_tx_buffer[MSG_BYTE_CONTENT + 1] = pt[0];
-    radio_send_message();
-}
-
-void timer_temp_cb() {
-    __enable_interrupt();
-    int temp = adc10_sample_temp();
-    printf("temp: %d \r\n", temp);
-
-    // TIMER TICK
-    int i;
-    for (i = 0 ; i < NUM_TIMERS ; i ++) {
-        if (timer[i] != UINT_MAX) timer[i]++;
-    }
-}
-
-/*static void send_id_request()
-{
-    init_message();
-    radio_tx_buffer[MSG_BYTE_TYPE] = MSG_TYPE_ID_REQUEST;
-    radio_send_message();
-}
-
-
-static void send_id_reply(unsigned char id)
-{
-    init_message();
-    radio_tx_buffer[MSG_BYTE_TYPE] = MSG_TYPE_ID_REPLY;
-    radio_tx_buffer[MSG_BYTE_CONTENT] = id;
-    radio_send_message();
-    printf("ID 0x%02X sent\r\n", id);
-}
-*/
-static PT_THREAD(thread_uart(struct pt *pt))
-{
+static PT_THREAD(thread_reset_cc2500(struct pt *pt)) {
     PT_BEGIN(pt);
 
-    while(1)
-    {
-        PT_WAIT_UNTIL(pt, uart_flag);
-
-        //led_green_blink(10); /* 10 timer ticks = 100 ms */
-
-        uart_flag = 0;
+    while (1) {
+        TIMER_RESET_CC2500 = 0;
+        PT_WAIT_UNTIL(pt, timer_reached(TIMER_RESET_CC2500, 80)); // 80 ticks = 0.8 second
+        printf("About to reset cc2500\r\n");
+        cc2500_idle();
+        cc2500_rx_enter();
     }
-
     PT_END(pt);
 }
 
-/*
- * Button
- */
-
-#define ANTIBOUNCING_DURATION 10 /* 10 timer counts = 100 ms */
-static int antibouncing_flag;
-static int button_pressed_flag;
-
-void button_pressed_cb()
-{
-    if(antibouncing_flag == 0)
-    {
-        button_pressed_flag = 1;
-        antibouncing_flag = 1;
-        TIMER_ANTIBOUNCING = 0;
-        //led_green_blink(200); /* 200 timer ticks = 2 seconds */
-    }
-}
-
-static PT_THREAD(thread_button(struct pt *pt))
-{
-    PT_BEGIN(pt);
-
-    while(1)
-    {
-        PT_WAIT_UNTIL(pt, button_pressed_flag == 1);
-
-        TIMER_ID_INPUT = 0;
-
-        button_pressed_flag = 0;
-    }
-
-
-    PT_END(pt);
-}
-
-static PT_THREAD(thread_antibouncing(struct pt *pt))
-{
-    PT_BEGIN(pt);
-
-    while(1)
-    {
-        PT_WAIT_UNTIL(pt, antibouncing_flag
-          && timer_reached(TIMER_ANTIBOUNCING, ANTIBOUNCING_DURATION));
-        antibouncing_flag = 0;
-    }
-
-    PT_END(pt);
-}
-
-static PT_THREAD(thread_periodic_send(struct pt *pt))
-{
-    PT_BEGIN(pt);
-
-    while(1)
-    {
-        TIMER_RADIO_SEND = 0;
-        printf("PT_WAIT_UNTIL temperature\r\n");
-        PT_WAIT_UNTIL(pt, node_id != NODE_ID_UNDEFINED && timer_reached( TIMER_RADIO_SEND, 10));// 10 ticks == one second
-        printf("AFTER WAIT UNTIL temperature\r\n");
-        send_temperature();
-        printf("Sent temperature\r\n");
-    }
-
-    PT_END(pt);
-}
-
-
-/*
- * main
- */
-
-
-void timer_radiorx_cb(void)
-{
-  printf("hello, this is timer_radiorx_cb()\r\n");
-
-  cc2500_idle();
-  cc2500_rx_enter();
-}
-
-int main(void)
-{
+int main (void) {
     watchdog_stop();
-/*
-    TIMER_ID_INPUT = UINT_MAX;
-    node_id = NODE_ID_UNDEFINED;
-*/
 
-    node_id = 5;
+    // Hardware init
+    set_mcu_speed_dco_mclk_16MHz_smclk_8MHz();
 
-    /* protothreads init */
+    timerA_init();
+    timerA_register_cb(&timerA_cb);
+    timerA_start_milliseconds(TIMER_PERIOD_MS);
+
+    uart_init(UART_9600_SMCLK_8MHZ);
+
+    adc10_start();
+
+    // Radio init
+    spi_init();
+    cc2500_init();
+    cc2500_set_channel(0x83);
+    cc2500_rx_register_buffer(radio_rx_buffer, PKTLEN);
+    cc2500_rx_register_cb(radio_rx_cb);
+    cc2500_rx_enter();
+    radio_rx_flag = 0;
+
+    __enable_interrupt();
+
+    leds_init();
+    led_green_off();
+    led_red_off();
+
+    // Protothreads init
     int i;
-    for(i = 0; i < NUM_PT; i++)
-    {
+    for (i = 0 ; i < NUM_PT; i++) {
         PT_INIT(&pt[i]);
     }
 
-    /* clock init */
-    set_mcu_speed_dco_mclk_16MHz_smclk_8MHz();
+    printf("Hello, world.\r\n");
 
-    /* LEDs init */
-/*    leds_init();
-    led_red_on();
-    led_green_flag = 0;
-*/
-
-
-    timerA_init();
-    timerA_register_cb(&timer_radiorx_cb);
-    timerA_start_milliseconds(1100);
-
-    /* button init */
-    /*button_init();
-    button_register_cb(button_pressed_cb);
-    antibouncing_flag = 0;
-    button_pressed_flag = 0;
- */ 
-    /* UART init (serial link) */
-    uart_init(UART_9600_SMCLK_8MHZ);
-    uart_register_cb(uart_cb);
-    uart_flag = 0;
-    uart_data = 0;
-
-    /* ADC10 init (temperature) */
-    adc10_start();
-
-    /* radio init */
-    spi_init();
-    cc2500_init();
-    cc2500_set_channel(0x03);
-    cc2500_rx_register_buffer(radio_tx_buffer, PKTLEN);
-    cc2500_rx_register_cb(radio_cb);
-    cc2500_rx_enter();
-    radio_rx_flag = 0;
-/*
-    button_enable_interrupt();
-    */
-    __enable_interrupt();
-
-    LPM1;
-
-    for(;;);
-
-    /* simple cycle scheduling */
-    while(1) {
-        thread_process_msg(&pt[0]);
-        thread_periodic_send(&pt[1]);
-        /*thread_led_red(&pt[0]);
-        thread_led_green(&pt[1]);
-        thread_uart(&pt[2]);
-        thread_antibouncing(&pt[3]);
-        thread_process_msg(&pt[4]);
-        thread_periodic_send(&pt[5]);
-        thread_button(&pt[6]);*/
+    while (1) {
+        thread_get_last_temperature(&pt[0]);
+        thread_print_temperature(&pt[1]);
+        // thread_send_temperature(&pt[2]);
+        thread_process_message(&pt[3]);
+        // thread_reset_cc2500(&pt[4]); // not necessary?
     }
 }
