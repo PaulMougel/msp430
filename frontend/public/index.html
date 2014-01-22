@@ -21,8 +21,8 @@
 	<h1>Radar</h1>
 	<div id="radar" style="float: left"></div>
 
-        <h1>Helpdesk</h1>
-        <p id="help"></p>
+		<h1>Helpdesk</h1>
+		<p id="help"></p>
 </body>
 
 <script>
@@ -31,26 +31,36 @@
 		millisPerPixel: 100
 	});
 	smoothie.streamTo(document.getElementById("temperature"));
-        var lines = {};
+	var lines = {};
+	function draw_temperatures (msg) {
+		if (! lines[msg.node_id]) {
+			lines[msg.node_id] = new TimeSeries();
+			smoothie.addTimeSeries(lines[msg.node_id], {
+				lineWidth: 5,
+				strokeStyle: 'rgb(' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ')'
+			});
+		}
+		lines[msg.node_id].append(new Date().getTime(), msg.temperature);
+	}
 	
 	// Radar graph
 	// Note: this is an ugly use of a radar char.
 	var nodes = {};
-	function draw_radar () {
+	function draw_radar (msg) {
+		nodes[msg.node_id] = msg.rssi;
 		var data = [];
-
 		var nodeIds = Object.keys(nodes);
 
 		nodeIds.forEach(function (nodeId) {
 			var elem = [];
 			for (var i = 0 ; i < nodeIds.length ; i++) {
-                            if (nodeIds[i] === nodeId) {
+							if (nodeIds[i] === nodeId) {
 					// RadarChart doesn't like negative values
 					// -90dBm = low power = far away
 					// -20dBm = high power = close
 					// So in our case we can just take the opposite of the value and we'll be fine
 					elem.push({axis: nodeIds[i], value: -nodes[nodeId]});
-                                    } else
+									} else
 					elem.push({axis: nodeIds[i], value: 0})
 			}
 			data.push(elem);
@@ -59,35 +69,25 @@
 		RadarChart.draw("#radar", data);
 	};
 
+	function draw_helpdesk (msg) {
+		if (! msg.help) return;
+		if (timeout) clearTimeout(timeout);
+
+		document.getElementById('help').innerText = msg.node_id + ' called for help';
+		timeout = setTimeout(function () {
+			document.getElementById('help').innerText = '';
+			timeout = null;
+		}, 3000);
+	}
+
 	var socket = io.connect('http://' + document.location.host);
 
-        var timeout;
-        socket.on('message', function (msg) {
-            console.log(msg.toString());
-            if (msg.length !== 8) return;
-
-            if (!lines[parseInt(msg[1])]) {
-                lines[parseInt(msg[1])] = new TimeSeries();
-	        smoothie.addTimeSeries(lines[parseInt(msg[1])], {
-                    lineWidth: 5,
-                    strokeStyle: 'rgb(' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ')'
-                });
-            }
-
-	    lines[parseInt(msg[1])].append(new Date().getTime(), parseFloat(msg[3]));
-
-	    nodes[parseInt(msg[1])] = parseInt(msg[5]);
-	    draw_radar();
-
-            if (msg[7] === "1") {
-                if (timeout) clearTimeout(timeout);
-                document.getElementById('help').innerHTML = msg[1] + ' called for help';
-                timeout = setTimeout(function () {
-                    document.getElementById('help').innerHTML = '';
-                    timeout = null;
-                }, 3000);
-            }
-        });
+		var timeout;
+		socket.on('message', function (msg) {
+			draw_temperatures(msg);
+			draw_radar(msg);
+			draw_helpdesk(msg);
+		});
 </script>
 
 </html>

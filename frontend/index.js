@@ -13,7 +13,12 @@ app.get('/smoothie.js', function (req, res) {
 
 // Data input
 var csvStream = csv();
+csvStream.from.options({columns: true})
 csvStream.transform(function (row) {
+	row.node_id = parseInt(row.node_id);
+	row.temperature = parseFloat(row.temperature);
+	row.rssi = parseInt(row.rssi);
+	row.help = parseInt(row.help) === 1;
     io.sockets.emit('message', row);
     return null;
 });
