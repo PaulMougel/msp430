@@ -8,7 +8,11 @@ MSP-430 board code
 
 1. Copy all code inside the `board` folder into the Raspberry Pi, in `~/board/`.
 2. On the host machine, `cd board/ez430-applications/demo/`
-3. Run `make pido` to download the code to the Raspberry Pi, cross-compile it and download it to the MSP-430
+3. Run: `make TARGET` to download the code to the Raspberry Pi, cross-compile it and download it to the MSP-430. For instance:
+   * `make pido_receiver`
+   * `make pido_transmitter`
+
+Set `PI_IP` with the IP address of the raspberry pi to override the default.
 
 All user code is in `board/ez430-applications/demo/src/`, everything else are drivers and utilities.
 

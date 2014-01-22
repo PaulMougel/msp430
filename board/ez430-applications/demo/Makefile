@@ -1,3 +1,4 @@
+PI_IP		= 172.16.5.2
 NAME		= ez430-demo
 LIBS		= -lez430
 SRC		= main.c
@@ -22,13 +23,17 @@ all: ${OUT_DIR}/${NAME}.elf ${OUT_DIR}/${NAME}.a43 ${OUT_DIR}/${NAME}.lst
 download: all
 	mspdebug rf2500 "prog ${OUT_DIR}/${NAME}.elf"
 
-pido:
-	scp -r src pi@172.16.5.2:board/ez430-applications/demo
-	ssh pi@172.16.5.2 "cd board/ez430-applications/demo && make download"
+pido_receiver:
+	scp -r src pi@${PI_IP}:board/ez430-applications/demo
+	ssh  pi@${PI_IP} "cd board/ez430-applications/demo && make download SRC=main.c"
+
+pido_transmitter:
+	scp -r src pi@${PI_IP}:board/ez430-applications/demo
+	ssh  pi@${PI_IP} "cd board/ez430-applications/demo && make download SRC=transmitter.c"
 
 pido_old:
-	scp -r src pi@172.16.5.2:board/ez430-applications/demo
-	ssh  pi@172.16.5.2 "cd board/ez430-applications/demo && make download SRC=old_main.c"
+	scp -r src pi@${PI_IP}:board/ez430-applications/demo
+	ssh  pi@${PI_IP} "cd board/ez430-applications/demo && make download SRC=old_main.c"
 
 ${OUT_DIR}/${NAME}.elf: ${OBJ}
 	@mkdir -p ${OUT_DIR}
