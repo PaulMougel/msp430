@@ -21,11 +21,6 @@
 #include "watchdog.h"
 #include "pt.h"
 
-// Protothreads
-// ------------
-#define NUM_PT 5
-static struct pt pt[NUM_PT];
-
 // Timer A
 // -------
 // Each TIMER_PERIOD_MS all timers are incremented
@@ -96,17 +91,25 @@ static PT_THREAD(thread_led_red(struct pt *pt)) {
 
 // Radio
 // -----
-#define PKTLEN 7
-#define MSG_NODE_ID 0
-static char radio_rx_buffer[PKTLEN];
-static char radio_tx_buffer[PKTLEN];
-void radio_cb(uint8_t *buffer, int size, int8_t rssi) {
-    led_green_blink(100);
-    cc2500_rx_enter();
-}
+#define PKTLEN 60
+static unsigned char radio_rx_buffer[PKTLEN];
+static unsigned char radio_tx_buffer[PKTLEN];
+static int radio_rx_flag = 0;
 
-static void radio_send_message () {
-    cc2500_utx(radio_tx_buffer, PKTLEN);
+static void radio_cb(uint8_t *buffer, int size, int8_t rssi) {
+    printf("Message received, checking CRC...");
+
+    if (size == -ERXBADCRC) {
+        led_red_blink(50);
+        printf("Bad CRC.\r\n");
+        cc2500_rx_enter();
+        return;
+    }
+
+    led_green_blink(50);
+    radio_rx_flag = 1;
+    printf("Good CRC\r\n");
+
     cc2500_rx_enter();
 }
 
@@ -117,49 +120,9 @@ static void init_message() {
     }
 }
 
-static void send_status () {
-    init_message();
-    radio_send_message();
-}
-
-// Application logic
-// ------------------
-static int last_temperature = 0;
-static PT_THREAD(thread_get_temperature(struct pt *pt)) {
-    // sets global variable last_temperature
-    PT_BEGIN(pt);
-
-    while (1) {
-        TIMER_GET_TEMPERATURE = 0;
-        PT_WAIT_UNTIL(pt, timer_reached(TIMER_GET_TEMPERATURE, 100)); // 1s
-        last_temperature = adc10_sample_temp();
-    }
-    PT_END(pt);
-}
-
-static PT_THREAD(thread_print_status(struct pt *pt)) {
-    PT_BEGIN(pt);
-    while (1) {
-        TIMER_PRINT_STATUS = 0;
-        PT_WAIT_UNTIL(pt, timer_reached(TIMER_PRINT_STATUS, 100)); // 1s
-        printf("%d,%d,%d,%d\r\n", 0, last_temperature, 0, 0);
-    }
-    PT_END(pt);
-}
-
-static PT_THREAD(thread_send_status(struct pt *pt)) {
-    PT_BEGIN(pt);
-    while (1) {
-        TIMER_SEND_STATUS = 0;
-        PT_WAIT_UNTIL(pt, timer_reached(TIMER_SEND_STATUS, 100)); // 1s
-        led_red_on();
-        send_status();
-        led_red_off();
-    }
-    PT_END(pt);
-}
-
-int main () {
+// Init
+// ----
+static void init () {
     watchdog_stop();
 
     // Hardware init
@@ -174,29 +137,8 @@ int main () {
     timerA_register_cb(&timerA_cb);
     timerA_start_milliseconds(TIMER_PERIOD_MS);
 
-    // Radio init
-    spi_init();
-    cc2500_init();
-    cc2500_rx_register_buffer(radio_rx_buffer, PKTLEN);
-    cc2500_rx_register_cb(radio_cb);
-    cc2500_rx_enter();
-
     led_green_blink(100);
     led_red_blink(100);
 
     __enable_interrupt();
-
-    // Protothreads init
-    int i;
-    for (i = 0 ; i < NUM_PT; i++) {
-        PT_INIT(&pt[i]);
-    }
-
-    while (1) {
-        thread_led_green(&pt[0]);
-        thread_led_red(&pt[1]);
-        thread_get_temperature(&pt[2]);
-        thread_print_status(&pt[3]);
-        thread_send_status(&pt[4]);
-    }
 }

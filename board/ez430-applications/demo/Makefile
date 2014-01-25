@@ -25,7 +25,7 @@ download: all
 
 pido_receiver:
 	scp -r src pi@${PI_IP}:msp430/board/ez430-applications/demo
-	ssh pi@${PI_IP} "cd msp430/board/ez430-applications/demo && make download SRC=main.c"
+	ssh pi@${PI_IP} "cd msp430/board/ez430-applications/demo && make download SRC=receiver.c"
 
 pido_transmitter:
 	scp -r src pi@${PI_IP}:msp430/board/ez430-applications/demo
