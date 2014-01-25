@@ -10,8 +10,6 @@ function getRandomInt (min, max) {
 
 var inputStream = new stream.PassThrough();
 
-inputStream.write('node_id,temperature,rssi,help\n');
-
 inputStream.generateData = function () {
 	var randomTemp = getRandomArbitary(10, 30);
 	var randomNodeID = getRandomInt(0, 5);

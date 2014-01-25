@@ -13,7 +13,7 @@ app.get('/smoothie.js', function (req, res) {
 
 // Data input
 var csvStream = csv();
-csvStream.from.options({columns: true})
+csvStream.from.options({columns: ['node_id', 'temperature', 'rssi', 'help']})
 csvStream.transform(function (row) {
 	row.node_id = parseInt(row.node_id);
 	row.temperature = parseFloat(row.temperature);
