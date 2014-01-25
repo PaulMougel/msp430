@@ -23,6 +23,8 @@ MSP-430 Front-end
 
 This reads CSV data from `stdin`, that is supposed to be sent by the MSP-430 board.
 
+To deploy: `npm run-script deploy`, optionnaly set the `PI_IP` environment variable.
+
 Supposed to be run with:
 
 ```bash

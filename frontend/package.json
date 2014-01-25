@@ -4,6 +4,7 @@
   "description": "MSP430 demo frontend",
   "main": "index.js",
   "scripts": {
+    "deploy": "./deploy.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Paul Mougel",
