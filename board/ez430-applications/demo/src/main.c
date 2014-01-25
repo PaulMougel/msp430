@@ -23,20 +23,21 @@
 
 // Protothreads
 // ------------
-#define NUM_PT 4
+#define NUM_PT 5
 static struct pt pt[NUM_PT];
 
 // Timer A
 // -------
 // Each TIMER_PERIOD_MS all timers are incremented
 // Used to update multi3le logic timers using only one hardware timer
-#define NUM_TIMERS 4
+#define NUM_TIMERS 5
 static uint16_t timer[NUM_TIMERS];
 #define TIMER_PERIOD_MS 10
 #define TIMER_LED_GREEN_ON timer[0]
 #define TIMER_LED_RED_ON timer[1]
 #define TIMER_GET_TEMPERATURE timer[2]
 #define TIMER_PRINT_STATUS timer[3]
+#define TIMER_SEND_STATUS timer[4]
 
 void timerA_cb() {
     int i;
@@ -96,11 +97,29 @@ static PT_THREAD(thread_led_red(struct pt *pt)) {
 // Radio
 // -----
 #define PKTLEN 7
+#define MSG_NODE_ID 0
+static char radio_rx_buffer[PKTLEN];
 static char radio_tx_buffer[PKTLEN];
 void radio_cb(uint8_t *buffer, int size, int8_t rssi) {
     led_green_blink(100);
-    // printf("Packet received.\r\n");
     cc2500_rx_enter();
+}
+
+static void radio_send_message () {
+    cc2500_utx(radio_tx_buffer, PKTLEN);
+    cc2500_rx_enter();
+}
+
+static void init_message() {
+    unsigned int i;
+    for (i = 0; i < PKTLEN; i++) {
+        radio_tx_buffer[i] = 0x00;
+    }
+}
+
+static void send_status () {
+    init_message();
+    radio_send_message();
 }
 
 // Application logic
@@ -128,6 +147,18 @@ static PT_THREAD(thread_print_status(struct pt *pt)) {
     PT_END(pt);
 }
 
+static PT_THREAD(thread_send_status(struct pt *pt)) {
+    PT_BEGIN(pt);
+    while (1) {
+        TIMER_SEND_STATUS = 0;
+        PT_WAIT_UNTIL(pt, timer_reached(TIMER_SEND_STATUS, 100)); // 1s
+        led_red_on();
+        send_status();
+        led_red_off();
+    }
+    PT_END(pt);
+}
+
 int main () {
     watchdog_stop();
 
@@ -146,10 +177,9 @@ int main () {
     // Radio init
     spi_init();
     cc2500_init();
-    cc2500_rx_register_buffer(radio_tx_buffer, PKTLEN);
+    cc2500_rx_register_buffer(radio_rx_buffer, PKTLEN);
     cc2500_rx_register_cb(radio_cb);
     cc2500_rx_enter();
-
 
     led_green_blink(100);
     led_red_blink(100);
@@ -167,5 +197,6 @@ int main () {
         thread_led_red(&pt[1]);
         thread_get_temperature(&pt[2]);
         thread_print_status(&pt[3]);
+        thread_send_status(&pt[4]);
     }
 }
